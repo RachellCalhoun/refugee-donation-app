@@ -1,0 +1,23 @@
+<div>
+        <form ng-submit="add(person)">
+            <p>
+                <label>Name: </label>
+                <input type="text" ng-model="person.name" placeholder="Enter your name">
+            </p>
+            <p>
+                <label>Email: </label>
+                <input type="text" ng-model="person.email" placeholder="Enter your email">
+            </p>
+            <button type="submit">Save</button>
+        </form>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            <tr ng-repeat="p in people">
+                <td ng-bind="p.name"></td>
+                <td ng-bind="p.email"></td>
+            </tr>
+        </table>
+</div>
