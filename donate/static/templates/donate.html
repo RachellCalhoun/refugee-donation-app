@@ -8,16 +8,44 @@
                 <label>Details: </label>
                 <input type="text" ng-model="donate.details" placeholder="Enter your details">
             </p>
+            <p>
+                <label>Location: </label>
+                <input type="text" ng-model="donate.location" placeholder="Enter your location">
+            </p>
+            <p>
+                <label>Condition choice: </label>
+                <select ng-model="donate.condition">
+                    <option data-ng-repeat="v in fields.condition.choices">{{v}}</option>
+                </select>
+            </p>
+            <p>
+                <label>Category choice: </label>
+                <select ng-model="donate.category">
+                    <option data-ng-repeat="cat in categories" ng-value="{{cat.id}}">{{cat.title}}<option>
+                    <!-- select a category -->
+                    <!-- for category in categories -->
+                    <!-- for subcategory in category -->
+                    <!-- list sub categories -->
+                </select>
+            </p>
             <button type="submit">Save</button>
         </form>
         <table class="table">
             <tr>
                 <th>Item</th>
                 <th>Details</th>
+                <th>Location</th>
+                <th>Condition</th>
+                <th>category</th>
+                <th>subcategory</th>
             </tr>
             <tr ng-repeat="d in donations">
                 <td ng-bind="d.item"></td>
                 <td ng-bind="d.details"></td>
+                <td ng-bind="d.location"></td>
+                <td ng-bind="d.condition"></td>
+                <td ng-bind="d.category"></td>
+                <td ng-bind="d.subcategory"></td>
             </tr>
         </table>
     </div>
