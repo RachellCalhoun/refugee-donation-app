@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from accounts.models import UserProfile
+from django.core.validators import RegexValidator
 
 # give or recieve, category of thing, subcategory
 # in post: email, message(? django-postman),
@@ -19,7 +19,7 @@ class Donate(models.Model):
 	location = models.CharField(max_length=20, blank=True, null=True)
 	# created_date = models.DateTimeField(default=timezone.now)
 	# published_date = models.DateTimeField(blank=True, null=True)
-	# contact_method = models.ForeignKey('accounts.ContactMethod', blank=True, null=True)
+	# contact_method = models.ForeignKey('ContactMethod', blank=True, null=True)
 	NEW = 'New'
 	LIKENEW = 'Like New'
 	VERYGOOD = 'Very Good'
@@ -78,7 +78,7 @@ class Request(models.Model):
         'SubCategory', limit_choices_to={'Category': 'Category'},
         on_delete=models.CASCADE, blank=True, null=True)
 	published_date = models.DateTimeField(blank=True, null=True)
-	contact_method = models.ForeignKey('accounts.ContactMethod', blank=True, null=True)
+	contact_method = models.ForeignKey('ContactMethod', blank=True, null=True)
 
 
 	def publish(self):
@@ -88,3 +88,26 @@ class Request(models.Model):
 
 	def __str__(self):
 		return self.item
+
+class UserProfile(models.Model):
+    username = models.ForeignKey('auth.User', default="")
+    organization = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
+
+class ContactMethod(models.Model):
+    user = models.ForeignKey('UserProfile')
+    email = models.EmailField(max_length=70)
+    phone_num = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+    phone_number = models.CharField(validators=[phone_num], max_length=15, blank=True) # validators should be a list
+    PHONE = "Phone Call"
+    EMAIL = "Email"
+    POSTCATEGORY = (
+        (PHONE, 'Phone Call'),
+        (EMAIL, 'Send Email'),
+        )
+    contact_method = models.CharField(max_length=5, choices=POSTCATEGORY, default=EMAIL)
+
+    def __str__(self):
+        return self.contact_method

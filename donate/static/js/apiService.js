@@ -1,7 +1,13 @@
 angular.module("refugeeapp")
     .factory("apiSvc", function($http){
-        function get(resourceName){
-            return $http.get("/api/v1/"+resourceName+"/?format=json")
+        function get(resourceName, params){
+            var queryString = "";
+            for (var k in params){
+                if (params.hasOwnProperty(k)){
+                    queryString += "&" + k + "=" + params[k]
+                }
+            }
+            return $http.get("/api/v1/"+resourceName+"/?format=json" + queryString)
         }
         function getSchema(resourceName){
             return $http.get("/api/v1/"+resourceName+"/schema/?format=json").then(function(response){
@@ -25,9 +31,13 @@ angular.module("refugeeapp")
         function post(resourceName, data){
             return  $http.post("/api/v1/"+resourceName+"/?format=json", data)
         }
+        function remove(resourceName, resourceId){
+            return $http.delete("/api/v1/" +  resourceName+"/"+ resourceId + "/?format=json")
+        }
         return {
             get:get,
             getSchema:getSchema,
             post:post,
+            remove:remove,
         }
     })

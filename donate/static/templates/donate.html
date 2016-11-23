@@ -21,11 +21,13 @@
             <p>
                 <label>Category choice: </label>
                 <select ng-model="donate.category">
-                    <option data-ng-repeat="cat in categories" ng-value="{{cat.id}}">{{cat.title}}<option>
-                    <!-- select a category -->
-                    <!-- for category in categories -->
-                    <!-- for subcategory in category -->
-                    <!-- list sub categories -->
+                    <option data-ng-repeat="cat in categories" value="{{cat.resource_uri}}" ng-click="getSubCategories(cat)">{{cat.title}}<option>
+                </select>
+            </p>
+            <p ng-show="donate.category">
+                <label>SubCategory choice: </label>
+                <select ng-model="donate.subcategory">
+                    <option data-ng-repeat="sub in subcategories" value="{{sub.resource_uri}}">{{sub.title}}<option>
                 </select>
             </p>
             <button type="submit">Save</button>
@@ -44,8 +46,9 @@
                 <td ng-bind="d.details"></td>
                 <td ng-bind="d.location"></td>
                 <td ng-bind="d.condition"></td>
-                <td ng-bind="d.category"></td>
-                <td ng-bind="d.subcategory"></td>
+                <td ng-bind="d.category.title"></td>
+                <td ng-bind="d.subcategory.title"></td>
+                <td><button type="button" ng-click="remove(d)">Delete</button></td>
             </tr>
         </table>
     </div>
