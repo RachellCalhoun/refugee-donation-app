@@ -1,0 +1,17 @@
+<div>
+        <form ng-submit="login(user)">
+            <p>
+                <label>UserName: </label>
+                <input type="text" ng-model="user.username" placeholder="Enter your username">
+            </p>
+
+            <p>
+                <label>Password: </label>
+                <input type="password" ng-model="user.password" placeholder="Enter your password">
+            </p>
+
+            <button type="submit">Login</button>
+            <button ng-click="logout()" type="button">Logout</button>
+        </form>
+
+</div>

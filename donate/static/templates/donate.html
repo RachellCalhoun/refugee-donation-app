@@ -38,8 +38,9 @@
                 <th>Details</th>
                 <th>Location</th>
                 <th>Condition</th>
-                <th>category</th>
-                <th>subcategory</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Author</th>
             </tr>
             <tr ng-repeat="d in donations">
                 <td ng-bind="d.item"></td>
@@ -48,6 +49,7 @@
                 <td ng-bind="d.condition"></td>
                 <td ng-bind="d.category.title"></td>
                 <td ng-bind="d.subcategory.title"></td>
+                <td ng-bind="d.author.username"></td>
                 <td><button type="button" ng-click="remove(d)">Delete</button></td>
             </tr>
         </table>

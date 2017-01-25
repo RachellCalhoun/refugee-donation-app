@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.core.validators import RegexValidator
+from django.contrib.auth.models import User
 
 # give or recieve, category of thing, subcategory
 # in post: email, message(? django-postman),
@@ -10,15 +11,14 @@ from django.core.validators import RegexValidator
 
 # Create your models here.
 class Donate(models.Model):
-	# author = models.ForeignKey('auth.User')
+	author = models.ForeignKey(User)
 	item = models.CharField(max_length=20)
 	details = models.TextField(blank=True, null=True)
 	#geo-django? https://djangopackages.org/grids/g/maps/
 	#https://pypi.python.org/pypi/django-google-maps/0.5.0
 	#https://django-geoposition.readthedocs.io/en/latest/
 	location = models.CharField(max_length=20, blank=True, null=True)
-	# created_date = models.DateTimeField(default=timezone.now)
-	# published_date = models.DateTimeField(blank=True, null=True)
+	published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
 	# contact_method = models.ForeignKey('ContactMethod', blank=True, null=True)
 	NEW = 'New'
 	LIKENEW = 'Like New'
@@ -68,26 +68,21 @@ class SubCategory(models.Model):
 		return self.title
 
 class Request(models.Model):
-	author = models.ForeignKey('auth.User')
-	item = models.CharField(max_length=20)
-	details = models.TextField(blank=True, null=True)
-	category = models.ForeignKey(
-        'Category',
-        on_delete=models.CASCADE, blank=True, null=True)
-	subcategory = models.ForeignKey(
-        'SubCategory', limit_choices_to={'Category': 'Category'},
-        on_delete=models.CASCADE, blank=True, null=True)
-	published_date = models.DateTimeField(blank=True, null=True)
-	contact_method = models.ForeignKey('ContactMethod', blank=True, null=True)
+    author = models.ForeignKey(User)
+    item = models.CharField(max_length=20)
+    details = models.TextField(blank=True, null=True)
+    location = models.CharField(max_length=20, blank=True, null=True)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, blank=True, null=True)
+    subcategory = models.ForeignKey('SubCategory', on_delete=models.CASCADE, blank=True, null=True)
+    published_date = models.DateTimeField(blank=True, null=True,  default=timezone.now)
+	# contact_method = models.ForeignKey('ContactMethod', blank=True, null=True)
 
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
 
-	def publish(self):
-		self.published_date = timezone.now()
-		self.save()
-
-
-	def __str__(self):
-		return self.item
+    def __str__(self):
+        return self.item
 
 class UserProfile(models.Model):
     username = models.ForeignKey('auth.User', default="")
