@@ -12,6 +12,20 @@ from django.db import IntegrityError
 from tastypie.exceptions import BadRequest
 
 
+class MultiPartResource(object):
+    def deserialize(self, request, data, format=None):
+        print(format)
+        if not format:
+            format = request.Meta.get('CONTENT_TYPE', 'application/json')
+        if format == 'application/x-www-form-urlencoded':
+            return request.POST
+        if format.startswith('multipart'):
+            data = request.POST.copy()
+            data.update(request.FILES)
+            print(data)
+            return data
+        return super(MultiPartResource, self).deserialize(request, data, format)
+
 class CategoryResource(ModelResource):
 
     class  Meta:
@@ -107,7 +121,7 @@ class UserResource(ModelResource):
 
         return bundle
 
-class DonateResource(ModelResource):
+class DonateResource(MultiPartResource, ModelResource):
     category = fields.ForeignKey(CategoryResource, 'category', null=True, full=True)
     subcategory = fields.ForeignKey(SubCategoryResource, 'subcategory', null=True, full=True)
     author = fields.ForeignKey(UserResource, 'author', null=True, full=True)
@@ -118,7 +132,8 @@ class DonateResource(ModelResource):
         detail_allowed_methods = ['get', 'post', 'put', 'delete']
         authorization = Authorization()
 
-    def obj_create(self, bundle, **kwargs):
+    def obj_create(self, bundle, request=None, **kwargs):
+        print(bundle)
         return super(DonateResource, self).obj_create(bundle, author=bundle.request.user)
 
     def build_schema(self):
@@ -148,3 +163,4 @@ class RequestResource(ModelResource):
           if f.name in base_schema['fields'] and f.choices:
             base_schema['fields'][f.name].update({'choices': f.choices,})
         return base_schema
+

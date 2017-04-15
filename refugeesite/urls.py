@@ -1,5 +1,8 @@
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
 from tastypie.api import Api
 from donate.api.resources import DonateResource, CategoryResource, SubCategoryResource, RequestResource, UserResource
 
@@ -17,4 +20,6 @@ urlpatterns = [
     url(r'^donate/',include('donate.urls')),
     url(r'^api/', include(v1_api.urls)),
     # url(r'^accounts/',include('donate.urls')),
-]
+]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
+

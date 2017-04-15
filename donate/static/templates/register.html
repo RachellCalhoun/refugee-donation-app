@@ -1,0 +1,30 @@
+<div id="register">
+        <form ng-submit="add(user)">
+            <p>
+                <label>UserName: </label>
+                <input type="text" ng-model="user.username" placeholder="Enter your username">
+            </p>
+             <p>
+                <label>First Name: </label>
+                <input type="text" ng-model="user.first_name" placeholder="Enter your first name">
+            </p>
+             <p>
+                <label>Last Name: </label>
+                <input type="text" ng-model="user.last_name" placeholder="Enter your last name">
+            </p>
+            <p>
+                <label>Email: </label>
+                <input type="text" ng-model="user.email" placeholder="Enter your email">
+            </p>
+            <p>
+                <label>Password: </label>
+                <input type="password" ng-model="user.password" placeholder="Enter your password">
+            </p>
+            <p>
+                <label>Confirm Password: </label>
+                <input type="password" ng-model="user.confirmpassword" placeholder="Enter your password">
+            </p>
+            <button type="submit">Save</button>
+        </form>
+
+</div>

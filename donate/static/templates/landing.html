@@ -1,6 +1,111 @@
 <div>
-      <label>Name:</label>
-      <input type="text" ng-model="name" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{name}}!</h1>
+<header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h1>Give More: Make a donation and change a life. </h1>
+                            <div ng-if="!isLoggedIn" class="col-md-6">
+                                <a  href="/#/landing#login" class="btn btn-outline btn-xl">Login</a>
+                            </div>
+                            <div ng-if="!isLoggedIn" class="col-md-6">
+                                 <a href="/donate/#/register" class="btn btn-outline btn-xl page-scroll">Register Here</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <img src="/static/img/joy.jpg"  class="img-responsive img-rounded" alt="">
+                </div>
+            </div>
+        </div>
+    </header>
+ <section id="login" class="download bg-default text-center">
+        <div  class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <form ng-if="!isLoggedIn" ng-submit="login(user)">
+                        <p>
+                            <label>UserName: </label>
+                            <input type="text" ng-model="user.username" placeholder="Enter your username">
+                        </p>
+
+                        <p>
+                            <label>Password: </label>
+                            <input type="password" ng-model="user.password" placeholder="Enter your password">
+                        </p>
+
+                        <button  type="submit" style="background-color:#fdcc52;" class="btn btn-outline btn-xl">Login</button>
+                    </form>
+                     <button ng-if="isLoggedIn" ng-click="logout()" style="background-color:#fdcc52;" class="btn btn-outline btn-xl" type="button">Logout</button>
+                </div>
+                <div class="col-md-6">
+                     <a href="/donate/#/register" style="background-color:#fdcc52;" class="btn btn-outline btn-xl">Register Here</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Our Most Recent Donations</h2>
+                        <last-donations limit=10></last-donations>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="/static/img/hands.jpg" class="img-responsive img-rounded" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="container-fluid">
+                        <div class="row">
+                        <h2>Our Most Recent Requests</h2>
+                            <div class="col-md-6">
+                                <div class="feature-item">
+
+                                     <last-requests limit=10></last-requests>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-content">
+            <div class="container">
+                <h2>Stop waiting.<br>Start giving.</h2>
+                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </section>
+
+    <section id="contact" class="contact bg-primary">
+        <div class="container">
+            <h2>We <i class="fa fa-heart"></i> new friends!</h2>
+            <ul class="list-inline list-social">
+                <li class="social-twitter">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li class="social-facebook">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="social-google-plus">
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
 </div>

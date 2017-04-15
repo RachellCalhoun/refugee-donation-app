@@ -30,6 +30,9 @@
                     <option data-ng-repeat="sub in subcategories" value="{{sub.resource_uri}}">{{sub.title}}<option>
                 </select>
             </p>
+            <p><label> Image: </label>
+                <input type="file" file-model="donate.image"/>
+            </p>
             <button type="submit">Save</button>
         </form>
         <table class="table">
@@ -41,6 +44,7 @@
                 <th>Category</th>
                 <th>Subcategory</th>
                 <th>Author</th>
+                <th>Image</th>
             </tr>
             <tr ng-repeat="d in donations">
                 <td ng-bind="d.item"></td>
@@ -50,6 +54,9 @@
                 <td ng-bind="d.category.title"></td>
                 <td ng-bind="d.subcategory.title"></td>
                 <td ng-bind="d.author.username"></td>
+                <td>
+                    <img ng-src="{{ d.image }}" style="width:200px;height:auto;"/>
+                </td>
                 <td><button type="button" ng-click="remove(d)">Delete</button></td>
             </tr>
         </table>
