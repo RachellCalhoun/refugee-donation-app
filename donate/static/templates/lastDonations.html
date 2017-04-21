@@ -1,9 +1,11 @@
 <div class="container">
     <div class="row">
-    <div class="col-xs-4 well" ng-repeat="d in donations">
-        <h2>{{ d.item }}</h2>
-        <img ng-src="{{ d.image }}" style="width:100%;max-height:200px;"/>
-        <p>{{ d.category.title }}</p>
-    </div>
+        <div class="col-xs-4 well" ng-repeat="d in donations">
+            <a href="#/donate/{{ d.id }}">
+                <h2>{{ d.item }}</h2>
+                <img ng-src="{{ d.image }}" style="width:100%;max-height:200px;"/>
+                <p>{{ d.category.title }}</p>
+            </a>
+        </div>
     </div>
 </div>

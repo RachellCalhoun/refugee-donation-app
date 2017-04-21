@@ -24,6 +24,14 @@ angular.module("refugeeapp") //calling module
         $routeProvider.when("/welcome", {
             templateUrl:"/static/templates/welcome.html",
         })
+        $routeProvider.when("/donate/:donateId", {
+            templateUrl:"/static/templates/donate_detail.html",
+            controller:"donateDetailController",
+        })
+        $routeProvider.when("/donate/edit/new", {
+            templateUrl:"/static/templates/donate_edit.html",
+            controller:"donateEditController",
+        })
         $routeProvider.otherwise({
             redirectTo:"/landing"
         })

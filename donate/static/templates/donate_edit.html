@@ -1,0 +1,36 @@
+        <form ng-submit="add(donate)">
+            <p>
+                <label>Item: </label>
+                <input type="text" ng-model="donate.item" placeholder="Enter your item">
+            </p>
+            <p>
+                <label>Details: </label>
+                <input type="text" ng-model="donate.details" placeholder="Enter your details">
+            </p>
+            <p>
+                <label>Location: </label>
+                <input type="text" ng-model="donate.location" placeholder="Enter your location">
+            </p>
+            <p>
+                <label>Condition choice: </label>
+                <select ng-model="donate.condition">
+                    <option data-ng-repeat="v in fields.condition.choices">{{v}}</option>
+                </select>
+            </p>
+            <p>
+                <label>Category choice: </label>
+                <select ng-model="donate.category">
+                    <option data-ng-repeat="cat in categories" value="{{cat.resource_uri}}" ng-click="getSubCategories(cat)">{{cat.title}}<option>
+                </select>
+            </p>
+            <p ng-show="donate.category">
+                <label>SubCategory choice: </label>
+                <select ng-model="donate.subcategory">
+                    <option data-ng-repeat="sub in subcategories" value="{{sub.resource_uri}}">{{sub.title}}<option>
+                </select>
+            </p>
+            <p><label> Image: </label>
+                <input type="file" file-model="donate.image"/>
+            </p>
+            <button type="submit">Save</button>
+        </form>
