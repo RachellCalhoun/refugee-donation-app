@@ -39,5 +39,6 @@ angular.module("refugeeapp")
                 list();
             });
         };
+
     });
 

@@ -15,9 +15,6 @@ class Donate(models.Model):
     author = models.ForeignKey(User)
     item = models.CharField(max_length=20)
     details = models.TextField(blank=True, null=True)
-    #geo-django? https://djangopackages.org/grids/g/maps/
-    #https://pypi.python.org/pypi/django-google-maps/0.5.0
-    #https://django-geoposition.readthedocs.io/en/latest/
     location = models.CharField(max_length=20, blank=True, null=True)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     # contact_method = models.ForeignKey('ContactMethod', blank=True, null=True)
