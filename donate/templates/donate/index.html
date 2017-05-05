@@ -66,6 +66,9 @@
                     <li ng-if="!isLoggedIn">
                         <a class="page-scroll" href="#/landing">Home</a>
                     </li>
+                     <li ng-if="!isLoggedIn">
+                        <a class="page-scroll" href="#/landing#login">Login</a>
+                    </li>
                     <li ng-if="!isLoggedIn">
                         <a class="page-scroll" href="#/register">Register</a>
                     </li>
@@ -78,6 +81,7 @@
 
     <div ng-view="">
     </div>
+
     <footer>
         <div class="container">
             <p>&copy; 2017 Give More Foundation</p>

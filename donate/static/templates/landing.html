@@ -7,7 +7,7 @@
                         <div class="header-content-inner">
                             <h1>Give More: Make a donation and change a life. </h1>
                             <div ng-if="!isLoggedIn" class="col-md-6">
-                                <a  href="/#/landing#login" class="btn btn-outline btn-xl">Login</a>
+                                <a  href="/donate/#/landing#login" class="btn btn-outline btn-xl">Login</a>
                             </div>
                             <div ng-if="!isLoggedIn" class="col-md-6">
                                  <a href="/donate/#/register" class="btn btn-outline btn-xl page-scroll">Register Here</a>
@@ -22,32 +22,6 @@
             </div>
         </div>
     </header>
- <section id="login" class="download bg-default text-center">
-        <div  class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <form ng-if="!isLoggedIn" ng-submit="login(user)">
-                        <p>
-                            <label>UserName: </label>
-                            <input type="text" ng-model="user.username" placeholder="Enter your username">
-                        </p>
-
-                        <p>
-                            <label>Password: </label>
-                            <input type="password" ng-model="user.password" placeholder="Enter your password">
-                        </p>
-
-                        <button  type="submit" style="background-color:#fdcc52;" class="btn btn-outline btn-xl">Login</button>
-                    </form>
-                     <button ng-if="isLoggedIn" ng-click="logout()" style="background-color:#fdcc52;" class="btn btn-outline btn-xl" type="button">Logout</button>
-                </div>
-                <div class="col-md-6">
-                     <a href="/donate/#/register" style="background-color:#fdcc52;" class="btn btn-outline btn-xl">Register Here</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
 
     <section id="features" class="features">
         <div class="container">
@@ -65,9 +39,9 @@
                     <img src="/static/img/hands.jpg" class="img-responsive img-rounded" alt="">
                 </div>
                 <div class="col-md-8">
-                    <div class="container-fluid">
+                    <div class="container-fluid text-center">
                         <div class="row">
-                        <h2>Our Most Recent Requests</h2>
+                        <h2>Our Most Recent Needs</h2>
                             <div class="col-md-6">
                                 <div class="feature-item">
 
@@ -84,10 +58,38 @@
         <div class="cta-content">
             <div class="container">
                 <h2>Stop waiting.<br>Start giving.</h2>
-                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+                 <a ng-if="!isLoggedIn" href="/donate/#/register" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+                 <a ng-if="isLoggedIn" href="/donate/#/donate" class="btn btn-outline btn-xl page-scroll">Let's Donate Today!</a>
+
             </div>
         </div>
         <div class="overlay"></div>
+    </section>
+    <section ng-if="!isLoggedIn"  id="login" class=" text-center">
+        <div  class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <form ng-if="!isLoggedIn" ng-submit="login(user)">
+                        <p>
+                            <label>UserName: </label>
+                            <input type="text" ng-model="user.username" placeholder="Enter your username">
+                        </p>
+
+                        <p>
+                            <label>Password: </label>
+                            <input type="password" ng-model="user.password" placeholder="Enter your password">
+                        </p>
+
+                        <button  type="submit" style="background-color:#fdcc52;" class="btn btn-outline btn-xl">Login</button>
+                    </form>
+                     <!-- <button ng-if="isLoggedIn" ng-click="logout()" style="background-color:#fdcc52;" class="btn btn-outline btn-xl" type="button">Logout</button> -->
+                </div>
+                <div class="col-md-6">
+                     <a ng-if="!isLoggedIn" href="/donate/#/register" style="background-color:#fdcc52;" class="btn btn-outline btn-xl">Register Here</a>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <section id="contact" class="contact bg-primary">
