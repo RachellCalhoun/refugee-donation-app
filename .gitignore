@@ -6,3 +6,4 @@ db.sqlite3
 uploads
 node_modules/*
 google_mapapi
+npm-debug.log

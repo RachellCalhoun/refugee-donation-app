@@ -3,3 +3,33 @@
     margin:0;
 }
 /*navbar no bottom margin */
+.marker {
+    background-image: url("../img/Map_marker.svg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    height: 100px;
+    width: 20%;
+    top: 200px;
+    left: 40%;
+    background-size: 20px 30px;
+}
+
+.mapDirective {
+    position: relative;
+ }
+
+#pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 400px;
+  }
+
+#pac-input:focus {
+    border-color: #4d90fe;
+}

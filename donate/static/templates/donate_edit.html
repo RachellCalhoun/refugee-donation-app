@@ -9,10 +9,6 @@
                 <input type="text" ng-model="donate.details" placeholder="Enter your details">
             </p>
             <p>
-                <label>Location: </label>
-                <input type="text" ng-model="donate.location" placeholder="Enter your location">
-            </p>
-            <p>
                 <label>Condition choice: </label>
                 <select ng-model="donate.condition">
                     <option data-ng-repeat="v in fields.condition.choices">{{v}}</option>
@@ -34,7 +30,7 @@
                 <input type="file" file-model="donate.image"/>
             </p>
             <p><label> Location: </label>
-                <map location="donate.location"></map>
+                <map location="donate.location" editable="true"></map>
             </p>
             <button type="submit">Save</button>
         </form>

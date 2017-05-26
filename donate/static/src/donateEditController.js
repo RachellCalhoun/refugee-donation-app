@@ -8,7 +8,13 @@ angular.module("refugeeapp")
             var fd = new FormData();
             for(var key in donate){
                 if (donate.hasOwnProperty(key)){
-                    fd.append(key, donate[key])
+                    if (key === "location"){
+                        fd.append(key, JSON.stringify(donate[key]))
+                    }
+                    else {
+                        fd.append(key, donate[key])
+                    }
+
                 }
             }
            apiSvc.multipartpost("donate", fd).then(function(d){

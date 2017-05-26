@@ -1,5 +1,10 @@
-<div>
+
+<div class="mapDirective">
     <div style="height:500px;">
     </div>
-    <button ng-click="locate()">Find my Location</button>
+    <div class="marker">
+    </div>
+        <input onkeypress="return event.keyCode !=13;" id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+    <button type="button" ng-click="locate()">Find my Location</button>
 </div>

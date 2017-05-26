@@ -4,14 +4,25 @@ angular.module("refugeeapp")
         restrict:"E",
         templateUrl:"/static/templates/map.html",
         transclude:true,
+        scope:{
+            location:"="
+        },
         link: function($scope, elem, attributes){
+            var initpos = { lat: -34.397, lng: 150.644 };
+            if ($scope.location) {
+                initpos = $scope.location
+            }
             var map = new google.maps.Map(elem.children(0).children(0)[0], {
-            center: {lat: -34.397, lng: 150.644},
+            center: initpos,
             zoom: 10
             });
+            function setCenter(position){
+                map.setCenter(position);
+                $scope.location = position;
+            }
             $scope.locate=function(){
                 navigator.geolocation.getCurrentPosition(function(pos){
-                    map.setCenter({lat:pos.coords.latitude, lng:pos.coords.longitude})
+                    setCenter({lat:pos.coords.latitude, lng:pos.coords.longitude})
                 }, function(error){
                     console.log(error)
                 },{
@@ -20,6 +31,27 @@ angular.module("refugeeapp")
                     maximumAge:0,
                 })
             }
+            // Create the search box and link it to the UI element.
+            var input = document.getElementById('pac-input');
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            searchBox.addListener('places_changed', function() {
+              var places = searchBox.getPlaces();
+
+              if (places.length == 0) {
+                return;
+              }
+
+              places.forEach(function(place) {
+                if (!place.geometry) {
+                  console.log("Returned place contains no geometry");
+                  return;
+                }
+                setCenter(place.geometry.location)
+
+              });
+            });
 
         }
 
