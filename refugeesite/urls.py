@@ -17,7 +17,7 @@ v1_api.register(UserResource())
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^donate/',include('donate.urls')),
+    url(r'^',include('donate.urls')),
     url(r'^api/', include(v1_api.urls)),
     # url(r'^accounts/',include('donate.urls')),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
