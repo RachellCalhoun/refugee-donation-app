@@ -12,5 +12,10 @@ angular.module("refugeeapp")
                 list();
             });
         };
+        $scope.interested = function(donate){
+            apiSvc.post("donationmatch", { donate:donate.resource_uri }).then(function(response){
+                list();
+            });
+        };
     });
 

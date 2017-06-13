@@ -104,3 +104,8 @@ class ContactMethod(models.Model):
 
     def __str__(self):
         return self.contact_method
+
+class DonationMatch(models.Model):
+    donate = models.ForeignKey('Donate', blank=True, null=True)
+    interested = models.ForeignKey(User)
+    approve_contact = models.BooleanField(default=False)

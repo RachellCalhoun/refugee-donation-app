@@ -4,25 +4,25 @@
             <tr>
                 <th>Item</th>
                 <th>Details</th>
-                <th>Location</th>
                 <th>Condition</th>
                 <th>Category</th>
-                <th>Subcategory</th>
-                <th>Author</th>
                 <th>Image</th>
+                <th></th>
             </tr>
             <tr ng-repeat="d in donations">
-                <td ng-bind="d.item"></td>
+                <td>
+                    <a href="#/donate/{{ d.id }}">{{ d.item }}</a>
+                </td>
                 <td ng-bind="d.details"></td>
-                <td ng-bind="d.location"></td>
                 <td ng-bind="d.condition"></td>
-                <td ng-bind="d.category.title"></td>
-                <td ng-bind="d.subcategory.title"></td>
-                <td ng-bind="d.author.username"></td>
+                <td>{{ d.category.title }} - {{ d.subcategory.title }}</td>
+
                 <td>
                   <a href="#/donate/{{ d.id }}"><img ng-src="{{ d.image }}" style="width:200px;height:auto;"/></a>
                 </td>
-                <td><button type="button" ng-click="remove(d)">Delete</button></td>
+                <td><button type="button" ng-click="remove(d)">Delete</button>
+                <button type="button" ng-click="interested(d)">I'm interested</button></td>
+
             </tr>
         </table>
 
