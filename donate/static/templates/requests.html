@@ -1,4 +1,6 @@
-<div>
+
+<div class="container containerBig">
+<h1> Enter your request for a donation </h1>
         <form ng-submit="add(request)">
             <p>
                 <label>Item: </label>
@@ -15,36 +17,39 @@
             <p>
                 <label>Category choice: </label>
                 <select ng-model="request.category">
-                    <option data-ng-repeat="cat in categories" value="{{cat.resource_uri}}" ng-click="getSubCategories(cat)">{{cat.title}}<option>
+                    <option data-ng-repeat="cat in categories" value="{{cat.resource_uri}}" ng-click="getSubCategories(cat)">{{cat.title}}</option>
                 </select>
             </p>
             <p ng-show="request.category">
                 <label>SubCategory choice: </label>
                 <select ng-model="request.subcategory">
-                    <option data-ng-repeat="sub in subcategories" value="{{sub.resource_uri}}">{{sub.title}}<option>
+                    <option data-ng-repeat="sub in subcategories" value="{{sub.resource_uri}}">{{sub.title}}</option>
                 </select>
             </p>
-            <button type="submit">Save</button>
+            <button class="btn btn-outline darkbtn" type="submit">Save</button>
         </form>
+    <h1>These are the urgent needs, can you help?</h1>
         <table class="table">
             <tr>
                 <th>Posted Date</th>
                 <th>Item</th>
                 <th>Details</th>
-                <th>Location</th>
+                <!-- <th>Location</th> -->
                 <th>category</th>
-                <th>subcategory</th>
-                <th>Author</th>
+                <!-- <th>subcategory</th> -->
+                <!-- <th>Author</th> -->
             </tr>
             <tr ng-repeat="r in requests">
                 <td ng-bind="r.published_date|date"></td>
                 <td ng-bind="r.item"></td>
                 <td ng-bind="r.details"></td>
-                <td ng-bind="r.location"></td>
-                <td ng-bind="r.category.title"></td>
-                <td ng-bind="r.subcategory.title"></td>
-                <td ng-bind="r.author.username"></td>
-                <td><button type="button" ng-click="remove(r)">Delete</button></td>
+                <!-- <td ng-bind="r.location"></td> -->
+                <td>{{ r.category.title }} - {{ r.subcategory.title }}</td>
+               <!--.  <td ng-bind="r.author.username"></td> -->
+                <td><button type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button>
+                <button type="button" class="btn btn-outline darkbtn" ng-click="interested(r)">I'm interested</button></td>
+
             </tr>
         </table>
     </div>
+

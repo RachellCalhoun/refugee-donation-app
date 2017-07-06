@@ -1,5 +1,11 @@
-    <div class="container">
+
+    <div class="container containerBig">
+            <h1 class="text-center">Enter your donation</h1>
+    <a href="#/donate"><p> Back to donation list</p></a>
         <form ng-submit="add(donate)">
+        <div class="row">
+        <div class="col-sm-6">
+        <h2>Item Information</h2>
             <p>
                 <label>Item: </label>
                 <input type="text" ng-model="donate.item" placeholder="Enter your item">
@@ -17,20 +23,25 @@
             <p>
                 <label>Category choice: </label>
                 <select ng-model="donate.category">
-                    <option data-ng-repeat="cat in categories" value="{{cat.resource_uri}}" ng-click="getSubCategories(cat)">{{cat.title}}<option>
+                    <option data-ng-repeat="cat in categories" value="{{cat.resource_uri}}" ng-click="getSubCategories(cat)">{{cat.title}}</option>
                 </select>
             </p>
             <p ng-show="donate.category">
                 <label>SubCategory choice: </label>
                 <select ng-model="donate.subcategory">
-                    <option data-ng-repeat="sub in subcategories" value="{{sub.resource_uri}}">{{sub.title}}<option>
+                    <option data-ng-repeat="sub in subcategories" value="{{sub.resource_uri}}">{{sub.title}}</option>
                 </select>
             </p>
             <p><label> Image: </label>
-                <input type="file" file-model="donate.image"/>
+                <input class="btn" type="file" file-model="donate.image"/>
             </p>
+            </div>
+            <div class="col-sm-6">
             <p><label> Location: </label>
                 <map location="donate.location" editable="true"></map>
             </p>
-            <button type="submit">Save</button>
+            </div>
+            <button class="btn btn-outline darkbtn" type="submit">Save</button>
+        </div>
         </form>
+    </div>

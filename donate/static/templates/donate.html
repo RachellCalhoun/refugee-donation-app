@@ -1,6 +1,9 @@
 
-        <a href="#/donate/edit/new">Click here to add more</a>
+    <div class="container containerBig">
+       <h1 class="text-center">Items recently donated</h1>
         <table class="table">
+         <p><a href="#/donate/edit/new"><p>Click here to add more</p></a>
+        <tbody>
             <tr>
                 <th>Item</th>
                 <th>Details</th>
@@ -20,9 +23,11 @@
                 <td>
                   <a href="#/donate/{{ d.id }}"><img ng-src="{{ d.image }}" style="width:200px;height:auto;"/></a>
                 </td>
-                <td><button type="button" ng-click="remove(d)">Delete</button>
-                <button type="button" ng-click="interested(d)">I'm interested</button></td>
+                <td><button type="button" class="btn btn-outline darkbtn" ng-click="remove(d)">Delete</button>
+                <button type="button" class="btn btn-outline darkbtn" ng-click="interested(d)">I'm interested</button></td>
 
             </tr>
+            </tbody>
         </table>
 
+    </div>

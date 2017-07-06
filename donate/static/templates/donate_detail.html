@@ -1,8 +1,11 @@
-<div class="well">
-    <h1>{{ donate.item }}</h1>
-    <img ng-src="{{ donate.image }}"/>
-    <p>{{ donate.details }}</p>
-    <div ng-if="donate && donate.location">
-        <map location="donate.location"></map>
-    </div>
+
+<div class="containerBig"><a href="#/donate"><p> Back to donation list</p></a>
+	<div class="well small-well">
+		    <h1>{{ donate.item }}</h1>
+		    <img ng-src="{{ donate.image }}"/>
+		    <p>{{ donate.details }}</p>
+		    <!-- <div ng-if="donate && donate.location">
+		        <map location="donate.location"></map>
+		    </div> -->
+	</div>
 </div>

@@ -1,16 +1,14 @@
 
     <table class="table">
             <tr>
-
+                <th><h3>Date</h3></th>
                 <th><h3>Item</h3></th>
                 <th><h3>Category</h3></th>
-                <th><h3>Date</h3></th>
             </tr>
             <tr ng-repeat="r in requests">
+                <td>{{ r.published_date|date }}</td>
                 <td>{{ r.item }}</td>
                 <td>{{ r.category.title }}</td>
-                <td>{{ r.published_date|date }}</td>
-
             </tr>
 </table>
 

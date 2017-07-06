@@ -1,0 +1,22 @@
+    <div class="containerBig">
+        <table class="table">
+            <tr>
+                <th>Posted Date</th>
+                <th>Item</th>
+                <th>Details</th>
+                <!-- <th>Location</th> -->
+                <th>category</th>
+                <!-- <th>subcategory</th> -->
+                <!-- <th>Author</th> -->
+            </tr>
+            <tr ng-repeat="r in requests">
+                <td ng-bind="r.published_date|date"></td>
+                <td ng-bind="r.item"></td>
+                <td ng-bind="r.details"></td>
+                <!-- <td ng-bind="r.location"></td> -->
+                <td>{{ r.category.title }} - {{ r.subcategory.title }}</td>
+               <!--  <td ng-bind="r.author.username"></td> -->
+                <td><button type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button></td>
+            </tr>
+        </table>
+    </div>
