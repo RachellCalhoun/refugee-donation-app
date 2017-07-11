@@ -16,14 +16,14 @@
             </p>
             <p>
                 <label>Category choice: </label>
-                <select ng-model="request.category">
-                    <option data-ng-repeat="cat in categories" value="{{cat.resource_uri}}" ng-click="getSubCategories(cat)">{{cat.title}}</option>
+                <select ng-model="categorySelected" ng-change="getSubCategories(categorySelected)">
+                    <option data-ng-repeat="cat in categories" ng-value="{{cat}}" >{{cat.title}}</option>
                 </select>
             </p>
             <p ng-show="request.category">
                 <label>SubCategory choice: </label>
                 <select ng-model="request.subcategory">
-                    <option data-ng-repeat="sub in subcategories" value="{{sub.resource_uri}}">{{sub.title}}</option>
+                    <option data-ng-repeat="sub in subcategories" ng-value="{{sub.resource_uri}}">{{sub.title}}</option>
                 </select>
             </p>
             <button class="btn btn-outline darkbtn" type="submit">Save</button>
@@ -44,10 +44,13 @@
                 <td ng-bind="r.item"></td>
                 <td ng-bind="r.details"></td>
                 <!-- <td ng-bind="r.location"></td> -->
+                <!-- <td>{{ r.category.title }} - {{ r.subcategory.title }}</td> -->
                 <td>{{ r.category.title }} - {{ r.subcategory.title }}</td>
                <!--.  <td ng-bind="r.author.username"></td> -->
-                <td><button type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button>
-                <button type="button" class="btn btn-outline darkbtn" ng-click="interested(r)">I'm interested</button></td>
+                <td>
+                    <button ng-if="user.u === r.author.username" type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button>
+                    <button ng-if="user.u !== r.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(r)">I'm interested</button>
+                </td>
 
             </tr>
         </table>

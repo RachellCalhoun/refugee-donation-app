@@ -1,8 +1,9 @@
 angular.module("refugeeapp")
-    .controller("requestController", function($scope, apiSvc){
+    .controller("requestController", function($scope, apiSvc, sessionSvc){
         $scope.requests = [];
         $scope.request = {};
         $scope.fields = {};
+        $scope.user = sessionSvc.getUser();
         $scope.add = function(request){
             // $scope.donations.push(angular.copy(request));
             // $scope.request = {}
@@ -29,6 +30,7 @@ angular.module("refugeeapp")
         }
         init();
         $scope.getSubCategories = function(category){
+            $scope.request.category = category.resource_uri;
             apiSvc.get("subcategory",{category:category.id}).then(function(response){
                 $scope.subcategories = response.data.objects;
             });

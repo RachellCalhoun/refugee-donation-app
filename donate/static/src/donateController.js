@@ -1,6 +1,7 @@
 angular.module("refugeeapp")
-    .controller("donateController", function($scope, apiSvc){
+    .controller("donateController", function($scope, apiSvc, sessionSvc){
         $scope.donations = [];
+        $scope.user = sessionSvc.getUser();
         function list(){
             apiSvc.get("donate").then(function(response){
                 $scope.donations = response.data.objects;

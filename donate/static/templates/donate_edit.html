@@ -22,14 +22,14 @@
             </p>
             <p>
                 <label>Category choice: </label>
-                <select ng-model="donate.category">
-                    <option data-ng-repeat="cat in categories" value="{{cat.resource_uri}}" ng-click="getSubCategories(cat)">{{cat.title}}</option>
+                <select ng-model="categorySelected" ng-change="getSubCategories(categorySelected)">
+                    <option data-ng-repeat="cat in categories" ng-value="{{cat}}" >{{cat.title}}</option>
                 </select>
             </p>
             <p ng-show="donate.category">
                 <label>SubCategory choice: </label>
                 <select ng-model="donate.subcategory">
-                    <option data-ng-repeat="sub in subcategories" value="{{sub.resource_uri}}">{{sub.title}}</option>
+                    <option data-ng-repeat="sub in subcategories" ng-value="{{sub.resource_uri}}">{{sub.title}}</option>
                 </select>
             </p>
             <p><label> Image: </label>

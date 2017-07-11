@@ -2,15 +2,18 @@ angular.module("refugeeapp")
     .factory("sessionSvc", function($window, $rootScope){
         var sessionObject = null;
         function init(){
-            sessionObject = $window.sessionStorage.getItem("sessionObject")
+            sessionObject = JSON.parse($window.sessionStorage.getItem("sessionObject"));
         }
         function isLoggedIn(){
+            return !!sessionObject;
+        }
+        function getUser(){
             return sessionObject;
         }
         function set(obj){
             if (obj){
-            sessionObject = JSON.stringify(obj);
-            $window.sessionStorage.setItem("sessionObject", sessionObject)
+                sessionObject = obj;
+                $window.sessionStorage.setItem("sessionObject", JSON.stringify(sessionObject));
             }
             else{
                 sessionObject = null;
@@ -23,5 +26,6 @@ angular.module("refugeeapp")
             init:init,
             isLoggedIn:isLoggedIn,
             set:set,
+            getUser:getUser,
         }
     })

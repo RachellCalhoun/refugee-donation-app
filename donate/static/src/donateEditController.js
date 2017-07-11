@@ -35,6 +35,7 @@ angular.module("refugeeapp")
         }
         init();
         $scope.getSubCategories = function(category){
+            $scope.donate.category = category.resource_uri;
             apiSvc.get("subcategory",{category:category.id}).then(function(response){
                 $scope.subcategories = response.data.objects;
             });
