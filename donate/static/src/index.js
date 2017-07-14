@@ -7,12 +7,17 @@ angular.module("refugeeapp") //calling module
             controller:"userController"
         })
         $routeProvider.when("/donate", {
-            templateUrl:"/static/templates/donate.html",
+            templateUrl:"/static/templates/donate_list.html",
             controller:"donateController",
             auth:"auth"
         })
         $routeProvider.when("/request", {
-            templateUrl:"/static/templates/requests.html",
+            templateUrl:"/static/templates/request_list.html",
+            controller:"requestController",
+            auth:"auth"
+        })
+        $routeProvider.when("/request/edit/new", {
+            templateUrl:"/static/templates/request_edit.html",
             controller:"requestController",
             auth:"auth"
         })

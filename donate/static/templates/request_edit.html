@@ -1,0 +1,31 @@
+
+<div class="container containerBig">
+<h1> Enter your request for a donation </h1>
+        <form ng-submit="add(request)">
+            <p>
+                <label>Item: </label>
+                <input type="text" ng-model="request.item" placeholder="Enter your item">
+            </p>
+            <p>
+                <label>Details: </label>
+                <input type="text" ng-model="request.details" placeholder="Enter your details">
+            </p>
+            <p>
+                <label>Category choice: </label>
+                <select ng-model="categorySelected" ng-change="getSubCategories(categorySelected)">
+                    <option data-ng-repeat="cat in categories" ng-value="{{cat}}" >{{cat.title}}</option>
+                </select>
+            </p>
+            <p ng-show="request.category">
+                <label>SubCategory choice: </label>
+                <select ng-model="request.subcategory">
+                    <option data-ng-repeat="sub in subcategories" ng-value="{{sub.resource_uri}}">{{sub.title}}</option>
+                </select>
+            </p>
+            <p><label> Location: </label>
+                <map location="request.location" editable="true"></map>
+            </p>
+            <button class="btn btn-outline darkbtn" type="submit">Save</button>
+        </form>
+    </div>
+

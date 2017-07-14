@@ -1,10 +1,12 @@
     <div class="containerBig">
+        <h1>These are the urgent needs, can you help?</h1>
+        <p><a href="#/request/edit/new"><p>Click here to add more</p></a>
         <table class="table">
             <tr>
                 <th>Posted Date</th>
                 <th>Item</th>
                 <th>Details</th>
-                <!-- <th>Location</th> -->
+                <th>Location</th> 
                 <th>category</th>
                 <!-- <th>subcategory</th> -->
                 <!-- <th>Author</th> -->
@@ -13,10 +15,15 @@
                 <td ng-bind="r.published_date|date"></td>
                 <td ng-bind="r.item"></td>
                 <td ng-bind="r.details"></td>
-                <!-- <td ng-bind="r.location"></td> -->
+                <td>
+                    <a target="_blank" ng-href="{{ r.mapUrl }}">View Map</a>
+                </td> 
                 <td>{{ r.category.title }} - {{ r.subcategory.title }}</td>
                <!--  <td ng-bind="r.author.username"></td> -->
-                <td><button type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button></td>
+                <td>
+                    <button ng-if="user.u === r.author.username" type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button>
+                    <button ng-if="user.u !== r.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(r)">I'm interested</button>
+                </td>
             </tr>
         </table>
     </div>

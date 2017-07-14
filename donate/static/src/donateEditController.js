@@ -18,7 +18,7 @@ angular.module("refugeeapp")
                 }
             }
            apiSvc.multipartpost("donate", fd).then(function(d){
-                $location.path("#/donate")
+                $location.path("/donate")
             })
 
         };

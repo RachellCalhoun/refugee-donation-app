@@ -4,8 +4,10 @@
 		    <h1>{{ donate.item }}</h1>
 		    <img ng-src="{{ donate.image }}"/>
 		    <p>{{ donate.details }}</p>
-		    <!-- <div ng-if="donate && donate.location">
+		     <div ng-if="donate && donate.location">
 		        <map location="donate.location"></map>
-		    </div> -->
+			</div> 
+			<button ng-if="user.u !== d.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(d)">I'm interested</button>
+
 	</div>
 </div>
