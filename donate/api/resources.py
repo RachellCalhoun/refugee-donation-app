@@ -91,6 +91,7 @@ class UserResource(ModelResource):
                 return self.create_response(request, {
                     'success': True,
                     'u': u,
+                    'userId': user.id,
                 })
             else:
                 return self.create_response(request, {
@@ -169,6 +170,9 @@ class DonationMatchResource(ModelResource):
     interested = fields.ForeignKey(UserResource, 'interested', null=True, full=True)
 
     class Meta:
+        filtering = {
+            "interested": ('exact')
+        }
         queryset = DonationMatch.objects.all()
         list_allowed_methods = ['get', 'post']
         detail_allowed_methods = ['get', 'post', 'put', 'delete']

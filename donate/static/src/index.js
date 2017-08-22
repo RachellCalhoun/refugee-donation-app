@@ -37,6 +37,10 @@ angular.module("refugeeapp") //calling module
             templateUrl:"/static/templates/donate_edit.html",
             controller:"donateEditController",
         })
+        $routeProvider.when("/myinterests", {
+            templateUrl:"/static/templates/myinterests.html",
+            controller:"myinterestsController",
+        })
         $routeProvider.otherwise({
             redirectTo:"/landing"
         })

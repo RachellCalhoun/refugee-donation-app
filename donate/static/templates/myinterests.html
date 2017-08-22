@@ -1,0 +1,36 @@
+
+
+<div class="container containerBig">
+    <h1 class="text-center">Items recently donated</h1>
+     <table class="table">
+      <p><a href="#/donate/edit/new"><p>Click here to add more</p></a>
+     <tbody>
+         <tr>
+             <th>Item</th>
+             <th>Details</th>
+             <th>Condition</th>
+             <th>Category</th>
+             <th>Image</th>
+             <th></th>
+         </tr>
+         <tr ng-repeat="d in matches">
+             <td>
+                 <a href="#/donate/{{ d.donate.id }}">{{ d.donate.item }}</a>
+             </td>
+             <td ng-bind="d.donate.details"></td>
+             <td ng-bind="d.donate.condition"></td>
+             <td>{{ d.donate.category.title }} - {{ d.donate.subcategory.title }}</td>
+
+             <td>
+               <a href="#/donate/{{ d.donate.id }}"><img ng-src="{{ d.donate.image }}" style="width:200px;height:auto;"/></a>
+             </td>
+             <td>
+                 <button ng-if="user.u === d.donate.author.username" type="button" class="btn btn-outline darkbtn" ng-click="remove(d)">Delete</button>
+                 <button ng-if="user.u !== d.donate.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(d)">I'm interested</button>
+             </td>
+
+         </tr>
+         </tbody>
+     </table>
+
+ </div>
