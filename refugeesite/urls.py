@@ -4,7 +4,7 @@ from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from tastypie.api import Api
-from donate.api.resources import DonateResource, CategoryResource, SubCategoryResource, RequestResource, UserResource, DonationMatchResource
+from donate.api.resources import DonateResource, CategoryResource, SubCategoryResource, RequestResource, UserResource, DonationMatchResource, RequestMatchResource
 
 
 v1_api = Api(api_name='v1')
@@ -14,6 +14,7 @@ v1_api.register(DonateResource())
 v1_api.register(RequestResource())
 v1_api.register(UserResource())
 v1_api.register(DonationMatchResource())
+v1_api.register(RequestMatchResource())
 
 # v1_api.register(ContactResource())
 

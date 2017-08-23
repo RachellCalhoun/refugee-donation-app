@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Donate, Category, SubCategory, Request
+from .models import Donate, Category, SubCategory, Request, RequestMatch, DonationMatch
 # Register your models here.
 
 class SubCategoryInline(admin.TabularInline):
@@ -14,3 +14,5 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Donate)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Request)
+admin.site.register(RequestMatch)
+admin.site.register(DonationMatch)

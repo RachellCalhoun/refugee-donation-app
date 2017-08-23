@@ -1,7 +1,7 @@
 from tastypie.authorization import Authorization
 from tastypie import fields
 from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
-from donate.models import Donate, Category, SubCategory, Request, DonationMatch
+from donate.models import Donate, Category, SubCategory, Request, DonationMatch, RequestMatch
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from tastypie.http import HttpUnauthorized, HttpForbidden
@@ -180,3 +180,19 @@ class DonationMatchResource(ModelResource):
 
     def obj_create(self, bundle, **kwargs):
         return super(DonationMatchResource, self).obj_create(bundle, interested=bundle.request.user)
+
+class RequestMatchResource(ModelResource):
+    request = fields.ForeignKey(RequestResource, 'request', null=True, full=True)
+    interested = fields.ForeignKey(UserResource, 'interested', null=True, full=True)
+
+    class Meta:
+        filtering = {
+            "interested": ('exact')
+        }
+        queryset = RequestMatch.objects.all()
+        list_allowed_methods = ['get', 'post']
+        detail_allowed_methods = ['get', 'post', 'put', 'delete']
+        authorization = Authorization()
+
+    def obj_create(self, bundle, **kwargs):
+        return super(RequestMatchResource, self).obj_create(bundle, interested=bundle.request.user)

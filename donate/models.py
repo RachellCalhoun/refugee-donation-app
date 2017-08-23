@@ -109,3 +109,8 @@ class DonationMatch(models.Model):
     donate = models.ForeignKey('Donate', blank=True, null=True)
     interested = models.ForeignKey(User)
     approve_contact = models.BooleanField(default=False)
+
+class RequestMatch(models.Model):
+    request = models.ForeignKey('Request', blank=True, null=True)
+    interested = models.ForeignKey(User)
+    approve_contact = models.BooleanField(default=False)

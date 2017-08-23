@@ -51,5 +51,10 @@ angular.module("refugeeapp")
                 list();
             });
         };
+        $scope.interested = function(request){
+            apiSvc.post("requestmatch", { request:request.resource_uri }).then(function(response){
+                list();
+            });
+        };
     });
 

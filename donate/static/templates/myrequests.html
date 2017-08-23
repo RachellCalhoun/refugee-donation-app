@@ -1,0 +1,30 @@
+
+<div class="containerBig">
+    <h1>These are the urgent needs, can you help?</h1>
+    <p><a href="#/request/edit/new"><p>Click here to add more</p></a>
+    <table class="table">
+        <tr>
+            <th>Posted Date</th>
+            <th>Item</th>
+            <th>Details</th>
+            <th>Location</th> 
+            <th>category</th>
+            <!-- <th>subcategory</th> -->
+            <!-- <th>Author</th> -->
+        </tr>
+        <tr ng-repeat="r in requestmatches">
+            <td ng-bind="r.request.published_date|date"></td>
+            <td ng-bind="r.request.item"></td>
+            <td ng-bind="r.request.details"></td>
+            <td>
+                <a target="_blank" ng-href="{{ r.request.mapUrl }}">View Map</a>
+            </td> 
+            <td>{{ r.request.category.title }} - {{ r.request.subcategory.title }}</td>
+           <!--  <td ng-bind="r.request.author.request.username"></td> -->
+            <td>
+                <button ng-if="user.u === r.author.username" type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button>
+                <button ng-if="user.u !== r.author..username" type="button" class="btn btn-outline darkbtn" ng-click="interested(r)">I'm interested</button>
+            </td>
+        </tr>
+    </table>
+</div>
