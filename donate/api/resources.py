@@ -132,6 +132,9 @@ class DonateResource(MultiPartResource, ModelResource):
         list_allowed_methods = ['get', 'post']
         detail_allowed_methods = ['get', 'post', 'put', 'delete']
         authorization = Authorization()
+        filtering = {
+            "author": ('exact')
+        }
 
     def obj_create(self, bundle, request=None, **kwargs):
         print(bundle)
@@ -171,7 +174,8 @@ class DonationMatchResource(ModelResource):
 
     class Meta:
         filtering = {
-            "interested": ('exact')
+            "interested": ('exact'), 
+            "donate": ('exact')
         }
         queryset = DonationMatch.objects.all()
         list_allowed_methods = ['get', 'post']
