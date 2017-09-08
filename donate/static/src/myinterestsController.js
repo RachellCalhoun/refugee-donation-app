@@ -8,4 +8,9 @@ angular.module("refugeeapp")
             });
         }
         list();
+        $scope.remove = function(dm){
+            apiSvc.remove("donationmatch", dm.id).then(function(response){
+                list();
+            });
+        };
      })
