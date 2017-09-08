@@ -25,8 +25,8 @@
                <a href="#/donate/{{ d.donate.id }}"><img ng-src="{{ d.donate.image }}" style="width:200px;height:auto;"/></a>
              </td>
              <td>
-                 <button ng-if="user.u === d.donate.author.username" type="button" class="btn btn-outline darkbtn" ng-click="remove(d)">Delete</button>
-                 <button ng-if="user.u !== d.donate.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(d)">I'm interested</button>
+                 <!-- todo -->
+                 <button type="button" class="btn btn-outline darkbtn" ng-click="remove(d)">Delete</button>
              </td>
 
          </tr>

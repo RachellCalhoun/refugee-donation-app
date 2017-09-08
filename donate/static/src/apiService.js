@@ -31,6 +31,9 @@ angular.module("refugeeapp")
         function post(resourceName, data){
             return  $http.post("/api/v1/"+resourceName+"/?format=json", data)
         }
+        function put(resourceName, data){
+            return  $http.put("/api/v1/"+resourceName+"/?format=json", data)
+        }
         function multipartpost(resourceName, data){
             return $http({
                         url: "/api/v1/"+resourceName+"/?format=json",
@@ -47,6 +50,7 @@ angular.module("refugeeapp")
             get:get,
             getSchema:getSchema,
             post:post,
+            put:put,
             remove:remove,
             multipartpost: multipartpost,
         }

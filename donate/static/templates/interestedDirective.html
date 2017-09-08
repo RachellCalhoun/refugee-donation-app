@@ -3,6 +3,9 @@
         <tr ng-repeat="d in donatematches">
             <td ng-bind="d.interested.username"></td>
             <td>{{ d.interested.first_name }} {{ d.interested.last_name }}</td>
+            <td>
+                <button ng-click="approve(d)">Approve </button>
+            </td>
         </tr>
     </tbody>
 </table>
