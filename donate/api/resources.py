@@ -157,6 +157,10 @@ class RequestResource(ModelResource):
         list_allowed_methods = ['get', 'post']
         detail_allowed_methods = ['get', 'post', 'put', 'delete']
         authorization = Authorization()
+        filtering = {
+            "author": ('exact')
+        }
+
 
     def obj_create(self, bundle, **kwargs):
         return super(RequestResource, self).obj_create(bundle, author=bundle.request.user)

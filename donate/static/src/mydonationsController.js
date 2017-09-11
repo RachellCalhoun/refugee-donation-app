@@ -8,4 +8,10 @@ angular.module("refugeeapp")
         });
     }
     list();
+    $scope.remove = function(donate){
+        apiSvc.remove("donate", donate.id).then(function(response){
+            list();
+        });
+    };
+    
  })

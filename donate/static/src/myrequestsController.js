@@ -1,11 +1,16 @@
 angular.module("refugeeapp")
 .controller("myrequestsController", function ($scope, apiSvc, sessionSvc) {
-    $scope.matches = [];
-    var user = sessionSvc.getUser();
+    $scope.requests = [];
+    $scope.user = sessionSvc.getUser();
     function list(){
-        apiSvc.get("requestmatch", { "interested": user.userId }).then(function(response){
-            $scope.requestmatches = response.data.objects;
+        apiSvc.get("request", { "author": $scope.user.userId }).then(function(response){
+            $scope.requests = response.data.objects;
         });
     }
     list();
+    $scope.remove = function(request){
+        apiSvc.remove("request", request.id).then(function(response){
+            list();
+        });
+    };
  })

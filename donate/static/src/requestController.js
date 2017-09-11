@@ -14,18 +14,23 @@ angular.module("refugeeapp")
 
         };
         function list() {
-            apiSvc.get("request").then(function (response) {
-                $scope.requests = response.data.objects.map(function (r) {
-                    if (r.location.indexOf("lat") > -1) {
-                        r.location = JSON.parse(r.location);
-                        r.mapUrl = "http://maps.google.com/maps?q=loc:" + r.location.lat + "," + r.location.lng;
-                    }
-                    else {
-                        r.mapUrl = "http://maps.google.com/maps?q=" + r.location;
-                    }
-                    return(r)
-                });
+            apiSvc.get("requestmatch", { "interested": $scope.user.userId }).then(function(response){
+                var myhelps = response.data.objects.map(function (r){
+                    return r.request.id;
+                })
+                apiSvc.get("request").then(function (response) {
+                    $scope.requests = response.data.objects.filter(function (r) {
+                        if (r.location.indexOf("lat") > -1) {
+                            r.location = JSON.parse(r.location);
+                            r.mapUrl = "http://maps.google.com/maps?q=loc:" + r.location.lat + "," + r.location.lng;
+                        }
+                        else {
+                            r.mapUrl = "http://maps.google.com/maps?q=" + r.location;
+                        }
+                        return myhelps.indexOf(r.id) == -1;
+                    });
 
+                });
             });
         }
         list();

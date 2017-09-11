@@ -1,6 +1,6 @@
     <div class="containerBig">
         <h1>These are the urgent needs, can you help?</h1>
-        <p><a href="#/request/edit/new"><p>Click here to add more</p></a>
+        <p><a href="#/request/edit/new"><p>Click here to request an item</p></a>
         <table class="table">
             <tr>
                 <th>Posted Date</th>
@@ -22,7 +22,7 @@
                <!--  <td ng-bind="r.author.username"></td> -->
                 <td>
                     <button ng-if="user.u === r.author.username" type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button>
-                    <button ng-if="user.u !== r.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(r)">I'm interested</button>
+                    <button ng-if="user.u !== r.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(r)">I can help</button>
                 </td>
             </tr>
         </table>
