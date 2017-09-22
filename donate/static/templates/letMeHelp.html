@@ -8,9 +8,9 @@
          <tr>
              <th>Item</th>
              <th>Details</th>
-             <th>Condition</th>
+             
              <th>Category</th>
-             <th>Image</th>
+             
              <th></th>
          </tr>
          <tr ng-repeat="r in requestmatches">
@@ -18,12 +18,9 @@
                  <a href="#/request/{{ r.request.id }}">{{ r.request.item }}</a>
              </td>
              <td ng-bind="r.request.details"></td>
-             <td ng-bind="r.request.condition"></td>
+            
              <td>{{ r.request.category.title }} - {{ r.request.subcategory.title }}</td>
 
-             <td>
-               <a href="#/request/{{ r.request.id }}"><img ng-src="{{ r.request.image }}" style="width:200px;height:auto;"/></a>
-             </td>
              <td>
                  <!-- todo -->
                  <button type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">I can no longer help</button>

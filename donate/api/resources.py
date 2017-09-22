@@ -179,7 +179,8 @@ class DonationMatchResource(ModelResource):
     class Meta:
         filtering = {
             "interested": ('exact'), 
-            "donate": ('exact')
+            "donate": ('exact'),
+            "approve_contact":('exact')
         }
         queryset = DonationMatch.objects.all()
         list_allowed_methods = ['get', 'post']
@@ -195,7 +196,8 @@ class RequestMatchResource(ModelResource):
 
     class Meta:
         filtering = {
-            "interested": ('exact')
+            "interested": ('exact'),
+             "request": ('exact')
         }
         queryset = RequestMatch.objects.all()
         list_allowed_methods = ['get', 'post']

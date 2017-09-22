@@ -1,5 +1,5 @@
 angular.module("refugeeapp")
-.controller("myhelpsController", function ($scope, apiSvc, sessionSvc) {
+.controller("letMeHelpController", function ($scope, apiSvc, sessionSvc) {
     $scope.requestmatches = [];
     var user = sessionSvc.getUser();
     function list(){

@@ -13,4 +13,12 @@ angular.module("refugeeapp")
                 list();
             });
         };
+        $scope.getStatus = function(dm) {
+            if (dm.approve_contact) {
+                return dm.donate.author.email;
+            } else {
+                return "pending";
+            }
+        }
      })
+ 

@@ -11,6 +11,7 @@
              <th>Condition</th>
              <th>Category</th>
              <th>Image</th>
+             <th>Status</th>
              <th></th>
          </tr>
          <tr ng-repeat="d in matches">
@@ -23,6 +24,9 @@
 
              <td>
                <a href="#/donate/{{ d.donate.id }}"><img ng-src="{{ d.donate.image }}" style="width:200px;height:auto;"/></a>
+             </td>
+             <td>
+                 {{ getStatus(d) }}
              </td>
              <td>
                  <!-- todo -->

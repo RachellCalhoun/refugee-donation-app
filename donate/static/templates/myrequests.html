@@ -1,8 +1,10 @@
 
-<div class="containerBig">
+<div class="container containerBig">
     <h1>Items I've requested recently</h1>
     <p><a href="#/request/edit/new"><p>Click here to request another item</p></a>
+    
     <table class="table">
+        <tbody>
         <tr>
             <th>Posted Date</th>
             <th>Item</th>
@@ -11,8 +13,9 @@
             <th>category</th> -->
             <!-- <th>subcategory</th> -->
             <!-- <th>Author</th> -->
+            <th></th>
         </tr>
-        <tr ng-repeat="r in requests">
+        <tr ng-repeat-start="r in requests">
             <td ng-bind="r.published_date|date"></td>
             <td ng-bind="r.item"></td>
             <td ng-bind="r.details"></td>
@@ -25,5 +28,12 @@
                 <button  type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button>
             </td>
         </tr>
+        <tr ng-repeat-end>
+            <td></td>
+            <td colpan="5">
+                <volunteer-help request-id="{{ r.id }}"></volunteer-help>
+            </td>
+        </tr>
+        </tbody>
     </table>
 </div>

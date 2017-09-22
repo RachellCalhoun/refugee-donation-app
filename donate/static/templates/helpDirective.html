@@ -1,0 +1,13 @@
+<table class="table">
+        <tbody>
+            <tr ng-repeat="r in requestmatches">
+                <td ng-bind="r.interested.username"></td>
+                <td>{{ r.interested.first_name }} {{ r.interested.last_name }}</td>
+                <td>
+                    <button ng-if="r.approve_contact == false" ng-click="approve(r)">Approve </button>
+                    <button ng-if="r.approve_contact == true" ng-click="disapprove(r)">Remove Approval </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    

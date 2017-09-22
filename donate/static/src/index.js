@@ -46,8 +46,8 @@ angular.module("refugeeapp") //calling module
             controller:"myrequestsController",
         })
         $routeProvider.when("/letmehelp", {
-            templateUrl:"/static/templates/myhelps.html",
-            controller:"myhelpsController",
+            templateUrl:"/static/templates/letMeHelp.html",
+            controller:"letMeHelpController",
         })
         $routeProvider.when("/mydonations", {
             templateUrl:"/static/templates/mydonations.html",
