@@ -4,37 +4,27 @@
     <h1 class="text-center">Donations I'm interested in</h1>
      <table class="table">
       <p><a href="#/donate/edit/new"><p>Click here to add a donation</p></a>
-     <tbody>
-         <tr>
-             <th>Item</th>
-             <th>Details</th>
-             <th>Condition</th>
-             <th>Category</th>
-             <th>Image</th>
-             <th>Status</th>
-             <th></th>
-         </tr>
-         <tr ng-repeat="d in matches">
-             <td>
-                 <a href="#/donate/{{ d.donate.id }}">{{ d.donate.item }}</a>
-             </td>
-             <td ng-bind="d.donate.details"></td>
-             <td ng-bind="d.donate.condition"></td>
-             <td>{{ d.donate.category.title }} - {{ d.donate.subcategory.title }}</td>
 
-             <td>
-               <a href="#/donate/{{ d.donate.id }}"><img ng-src="{{ d.donate.image }}" style="width:200px;height:auto;"/></a>
-             </td>
-             <td>
-                 {{ getStatus(d) }}
-             </td>
-             <td>
-                 <!-- todo -->
-                 <button type="button" class="btn btn-outline darkbtn" ng-click="remove(d)">No Longer Interested</button>
-             </td>
 
-         </tr>
-         </tbody>
-     </table>
+      <div class="col-lg-3 col-sm-6 col-md-3 col-xl-2 well" style="margin:1em;" ng-repeat="d in matches">
+        <a href="#/donate/{{ d.id }}">
+            <h2>{{ d.donate.item }}</h2>
+            <a href="#/donate/{{ d.donate.id }}"><img ng-src="{{ d.donate.image }}" style="width:200px;height:auto;"/></a>
+            <p>
+            <span ng-bind="d.donate.published_date|date"></span><br>
+            <span ng-bind="d.donate.details"></span><br>
+            <span ng-bind="d.donate.condition"></span><br>
+            <span>{{ d.donate.category.title }} - {{ d.donate.subcategory.title }}</span>
+            <div>
+                {{ getStatus(d) }}
+            </div>
+            <span>
+                <!-- todo -->
+                <button type="button" class="btn btn-outline darkbtn" ng-click="remove(d)">No Longer Interested</button>
+            </span>
+        </p>
+             
+
+         </div>
 
  </div>

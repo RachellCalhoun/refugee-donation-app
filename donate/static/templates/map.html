@@ -4,7 +4,7 @@
     </div>
     <div class="marker">
     </div>
-        <input onkeypress="return event.keyCode !=13;" id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <input ng-if="editable" onkeypress="return event.keyCode !=13;" id="pac-input" class="controls" type="text" placeholder="Search Box">
 
-    <button type="button" class="btn btn-outline darkbtn" style="display:block; margin:auto;" ng-click="locate()"><p>Find my Location</p></button>
+    <button type="button" ng-if="editable" class="btn btn-outline darkbtn" style="display:block; margin:auto;" ng-click="locate()"><p>Find my Location</p></button>
 </div>

@@ -4,30 +4,22 @@
     <h1 class="text-center">Requests I've volunteered to help with</h1>
      <table class="table">
       <p><a href="#/request/edit/new"><p>Click here to add a request</p></a>
-     <tbody>
-         <tr>
-             <th>Item</th>
-             <th>Details</th>
-             
-             <th>Category</th>
-             
-             <th></th>
-         </tr>
-         <tr ng-repeat="r in requestmatches">
-             <td>
-                 <a href="#/request/{{ r.request.id }}">{{ r.request.item }}</a>
-             </td>
-             <td ng-bind="r.request.details"></td>
-            
-             <td>{{ r.request.category.title }} - {{ r.request.subcategory.title }}</td>
 
-             <td>
-                 <!-- todo -->
-                 <button type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">I can no longer help</button>
-             </td>
 
-         </tr>
-         </tbody>
-     </table>
-
- </div>
+      <div class="col-xs-3 well" style="margin:1em;" ng-repeat="r in requestmatches">
+        <h2>{{ r.request.item }}</h2>
+        <p ng-bind="r.request.published_date|date"></p>                
+        <span>{{ r.category.title }}</span>
+        <p ng-bind="r.request.details"></p>
+        <span>
+            <a target="_blank" ng-href="{{ r.mapUrl }}">View Map</a>
+        </span> 
+        <p>{{ r.request.category.title }} - {{ r.request.subcategory.title }}</p>
+        <div>
+            {{ getStatus(r) }}
+        </div>
+        <p>
+            <button type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">I can no longer help</button>
+        </p>
+        
+    </div>

@@ -1,43 +1,20 @@
 <div class="container containerBig">
     <h1 class="text-center">Items that I recently donated</h1>
-    <table class="table">
-        <p>
             <a href="#/donate/edit/new">
                 <p>Click here to add a donation</p>
             </a>
-            <tbody>
-                <tr>
-                    <th>Item</th>
-                    <th>Details</th>
-                    <th>Condition</th>
-                    <th>Category</th>
-                    <th>Image</th>
-                    <th></th>
-                </tr>
-                <tr ng-repeat-start="d in donations">
-                    <td>
-                        <a href="#/donate/{{ d.id }}">{{ d.item }}</a>
-                    </td>
-                    <td ng-bind="d.details"></td>
-                    <td ng-bind="d.condition"></td>
-                    <td>{{ d.category.title }} - {{ d.subcategory.title }}</td>
-
-                    <td>
-                        <a href="#/donate/{{ d.id }}"><img ng-src="{{ d.image }}" style="width:200px;height:auto;"/></a>
-                    </td>
-                    <td>
+            <div class="col-xs-3 well" style="margin:1em;" ng-repeat="d in donations">
+                <a href="#/donate/{{ d.id }}">
+                    <h2>{{ d.item }}</h2>
+                    <img ng-src="{{ d.image }}" style="width:100%;max-height:200px;"/></a>
+                    <span ng-bind="d.published_date|date"></span>
+                    <span ng-bind="d.condition"></span>
+                    <p ng-bind="d.details"></p>
+                    <p>{{ d.category.title }} - {{ d.subcategory.title }}</p>
+                    <p>
                         <button ng-if="user.u === d.author.username" type="button" class="btn btn-outline darkbtn" ng-click="remove(d)">Delete</button>
-                    </td>
-
-                </tr>
-                <tr ng-repeat-end>
-                    <td></td>
-                    <td colspan="5">
-                        <interested-in donate-id="{{ d.id }}"></interested-in>
-                    </td>
-                </tr>
-
-            </tbody>
-    </table>
-
+                   </p>
+                   <interested-in donate-id="{{ d.id }}"></interested-in>
+                </div>
+               
 </div>

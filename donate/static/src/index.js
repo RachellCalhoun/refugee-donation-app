@@ -6,12 +6,12 @@ angular.module("refugeeapp") //calling module
             templateUrl:"/static/templates/register.html",
             controller:"userController"
         })
-        $routeProvider.when("/donate", {
+        $routeProvider.when("/donations", {
             templateUrl:"/static/templates/donate_list.html",
             controller:"donateController",
             auth:"auth"
         })
-        $routeProvider.when("/request", {
+        $routeProvider.when("/requests", {
             templateUrl:"/static/templates/request_list.html",
             controller:"requestController",
             auth:"auth"

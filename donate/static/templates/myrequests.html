@@ -1,39 +1,24 @@
-
 <div class="container containerBig">
     <h1>Items I've requested recently</h1>
     <p><a href="#/request/edit/new"><p>Click here to request another item</p></a>
-    
-    <table class="table">
-        <tbody>
-        <tr>
-            <th>Posted Date</th>
-            <th>Item</th>
-            <th>Details</th>
-            <!-- <th>Location</th> 
-            <th>category</th> -->
-            <!-- <th>subcategory</th> -->
-            <!-- <th>Author</th> -->
-            <th></th>
-        </tr>
-        <tr ng-repeat-start="r in requests">
-            <td ng-bind="r.published_date|date"></td>
-            <td ng-bind="r.item"></td>
-            <td ng-bind="r.details"></td>
-            <!-- <td>
-                <a target="_blank" ng-href="{{ r.mapUrl }}">View Map</a>
-            </td> 
-            <td>{{ r.request.category.title }} - {{ r.request.subcategory.title }}</td> -->
-           <!--  <td ng-bind="r.request.author.request.username"></td> -->
-            <td>
-                <button  type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button>
-            </td>
-        </tr>
-        <tr ng-repeat-end>
-            <td></td>
-            <td colpan="5">
-                <volunteer-help request-id="{{ r.id }}"></volunteer-help>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+
+    <div class="col-xs-3 well" style="margin:1em;" ng-repeat="r in requests">
+        <h2>{{ r.item }}</h2>
+        <p ng-bind="r.published_date|date"></p>                
+        <span>{{ r.category.title }}</span>
+        <p ng-bind="r.details"></p>
+        <span>
+            <a target="_blank" ng-href="{{ r.mapUrl }}">View Map</a>
+        </span> 
+        <p>{{ r.category.title }} - {{ r.subcategory.title }}</p>
+        <p>
+          
+            <button  type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">Delete</button>
+        </p>
+        <volunteer-help request-id="{{ r.id }}"></volunteer-help>
+    </div>
 </div>
+
+ 
+ 
+

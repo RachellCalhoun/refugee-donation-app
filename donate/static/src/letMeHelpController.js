@@ -13,4 +13,11 @@ angular.module("refugeeapp")
             list();
         });
     };
+    $scope.getStatus = function(rm) {
+        if (rm.approve_contact) {
+            return rm.request.author.email;
+        } else {
+            return "pending";
+        }
+    }
  })

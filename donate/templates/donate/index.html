@@ -53,39 +53,58 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                        
+                        <li class="dropdown" ng-if="isLoggedIn">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Donations <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                            `   <li>
+                                    <a class="page-scroll" href="#/donate/edit/new">Donate Now</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="#/donations">All Donations</a>
+                                </li>                               
+                                <li>
+                                    <a class="page-scroll" href="#/mydonations">My Donations</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="#/myinterests">Donations I'm interested in</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" ng-if="isLoggedIn">
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Requests <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                <a class="page-scroll" href="#"></a>
+                                <li>
+                                        <a class="page-scroll" href="#/request/edit/new">Make a Request</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="#/requests">All Requests</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="#/myrequests">My Requests</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="#/letmehelp">Let me Help</a>
+                                    </li>
+                                </ul>
+                            </li>
                     <li ng-if="isLoggedIn">
-                       <a class="page-scroll" href="#/welcome">Home</a>
-                    </li>
-                    <li ng-if="isLoggedIn">
-                        <a class="page-scroll" href="#/donate">Donate</a>
-                    </li>
-                    <li ng-if="isLoggedIn">
-                        <a class="page-scroll" href="#/myinterests">Donations I'm interested in</a>
-                    </li>
-                    <li ng-if="isLoggedIn">
-                        <a class="page-scroll" href="#/request">Request</a>
-                    </li>
-                    <li ng-if="isLoggedIn">
-                        <a class="page-scroll" href="#/myrequests">My Requested Items</a>
-                    </li>
-                    <li ng-if="isLoggedIn">
-                        <a class="page-scroll" href="#/letmehelp">Let me help!</a>
-                    </li>
-                    <li ng-if="isLoggedIn">
-                        <a class="page-scroll" href="#/mydonations">Things I've donated</a>
-                    </li>
-                     <li ng-if="isLoggedIn">
-                        <a class="page-scroll" ng-click="logout()" href="">Logout</a>
-                    </li>
+                            <a class="page-scroll" href="#/landing">Home</a>
+                        </li>
+                        <li ng-if="isLoggedIn">
+                            <a class="page-scroll" ng-click="logout()" href="">Logout</a>
+                        </li>                   
+                     
                     <li ng-if="!isLoggedIn">
                         <a class="page-scroll" href="#/landing">Home</a>
                     </li>
                      <li ng-if="!isLoggedIn">
-                        <a class="page-scroll" href="#/login">Login</a>
+                        <a class="page-scroll" href="#/landing#login">Login</a>
                     </li>
                     <li ng-if="!isLoggedIn">
                         <a class="page-scroll" href="#/register">Register</a>
-                    </li>
+                    </li>                     
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
