@@ -1,13 +1,22 @@
-
-<div class="containerBig"><a href="#/donations"><p> Back to donation list</p></a>
+<div class="containerBig">
+	<a href="#/donations">
+		<p> Back to donation list</p>
+	</a>
 	<div class="well small-well">
-		    <h1>{{ donate.item }}</h1>
-		    <img class="img-responsive" ng-src="{{ donate.image }}"/>
-		    <p>{{ donate.details }}</p>
-		     <div ng-if="donate && donate.location">
-		        <map location="donate.location"></map>
-			</div> 
-			<button ng-if="user.u !== d.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(d)">I'm interested</button>
+		<div class="row">
+			<div class="col-md-6">
+				<h1>{{ donate.item }}</h1>
+				<img class="img-responsive" ng-src="{{ donate.image }}" />
+				<p>Item Details: {{ donate.details }}<br> Condition: {{ donate.condition }}
+			</div>
+			<div class="col-md-6">
+				<h1>Location</h1>
+				<div ng-if="donate && donate.location">
+					<map location="donate.location"></map>
+				</div>
+			</div>
+		</div>
+		<button ng-if="user.u !== d.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(d)">I'm interested</button>
 
 	</div>
 </div>

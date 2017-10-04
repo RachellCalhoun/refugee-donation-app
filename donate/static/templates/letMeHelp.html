@@ -1,19 +1,14 @@
-
-
 <div class="container containerBig">
     <h1 class="text-center">Requests I've volunteered to help with</h1>
-     <table class="table">
-      <p><a href="#/request/edit/new"><p>Click here to add a request</p></a>
 
-
-      <div class="col-xs-3 well" style="margin:1em;" ng-repeat="r in requestmatches">
-        <h2>{{ r.request.item }}</h2>
-        <p ng-bind="r.request.published_date|date"></p>                
+    <div class="col-xs-3 well" style="margin:1em;" ng-repeat="r in requestmatches">
+       <h2>{{ r.request.item }}</h2>
+        <p ng-bind="r.request.published_date|date"></p>
         <span>{{ r.category.title }}</span>
         <p ng-bind="r.request.details"></p>
         <span>
             <a target="_blank" ng-href="{{ r.mapUrl }}">View Map</a>
-        </span> 
+        </span>
         <p>{{ r.request.category.title }} - {{ r.request.subcategory.title }}</p>
         <div>
             {{ getStatus(r) }}
@@ -21,5 +16,6 @@
         <p>
             <button type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">I can no longer help</button>
         </p>
-        
+
     </div>
+</div>
