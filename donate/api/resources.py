@@ -136,6 +136,24 @@ class DonateResource(MultiPartResource, ModelResource):
             "author": ('exact')
         }
 
+    def override_urls(self):
+        return [
+            url(r"^(?P<resource_name>%s)/not_interested%s$" %
+                (self._meta.resource_name, trailing_slash()),
+                self.wrap_view('not_interested'), name="api_not_interested"),
+            ]
+
+    def not_interested(self, request, **kwargs):
+        print(request.GET.get('user', ))
+        self.method_check(request, allowed=['get'])
+        data = self.deserialize(request, request.body, format=request.META.get('CONTENT_TYPE', 'application/json'))
+        queryset = Donate.objects.exclude(donateobj___interested=request.user)
+        print('queryset variable', queryset)
+        
+        return self.create_response(request, { 'data': queryset})
+
+
+
     def obj_create(self, bundle, request=None, **kwargs):
         print(bundle)
         return super(DonateResource, self).obj_create(bundle, author=bundle.request.user)

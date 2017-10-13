@@ -1,13 +1,13 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'run', 'start' ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'run', 'start' ]
 2 info using npm@3.10.10
-3 info using node@v6.11.2
+3 info using node@v6.11.4
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info lifecycle new-age@3.3.7~prestart: new-age@3.3.7
 6 silly lifecycle new-age@3.3.7~prestart: no script for prestart, continuing
 7 info lifecycle new-age@3.3.7~start: new-age@3.3.7
 8 verbose lifecycle new-age@3.3.7~start: unsafe-perm in lifecycle true
-9 verbose lifecycle new-age@3.3.7~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/rachell/code/refugee-donation-app/node_modules/.bin:/home/rachell/code/venv/refugeevenv/bin:/home/rachell/bin:/home/rachell/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+9 verbose lifecycle new-age@3.3.7~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/rachell/code/refugee-donation-app/node_modules/.bin:/home/rachell/code/venv/refugeevenv/bin:/home/rachell/bin:/home/rachell/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 10 verbose lifecycle new-age@3.3.7~start: CWD: /home/rachell/code/refugee-donation-app
 11 silly lifecycle new-age@3.3.7~start: Args: [ '-c', 'gulp && python manage.py runserver' ]
 12 silly lifecycle new-age@3.3.7~start: Returned: code: 1  signal: null
@@ -20,13 +20,13 @@
 14 verbose stack     at ChildProcess.<anonymous> (/usr/lib/node_modules/npm/lib/utils/spawn.js:40:14)
 14 verbose stack     at emitTwo (events.js:106:13)
 14 verbose stack     at ChildProcess.emit (events.js:191:7)
-14 verbose stack     at maybeClose (internal/child_process.js:891:16)
-14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+14 verbose stack     at maybeClose (internal/child_process.js:920:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
 15 verbose pkgid new-age@3.3.7
 16 verbose cwd /home/rachell/code/refugee-donation-app
-17 error Linux 4.10.0-32-generic
-18 error argv "/usr/bin/nodejs" "/usr/bin/npm" "run" "start"
-19 error node v6.11.2
+17 error Linux 4.10.0-37-generic
+18 error argv "/usr/bin/node" "/usr/bin/npm" "run" "start"
+19 error node v6.11.4
 20 error npm  v3.10.10
 21 error code ELIFECYCLE
 22 error new-age@3.3.7 start: `gulp && python manage.py runserver`

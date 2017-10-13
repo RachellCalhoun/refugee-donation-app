@@ -8,6 +8,10 @@
 				<h1>{{ donate.item }}</h1>
 				<img class="img-responsive" ng-src="{{ donate.image }}" />
 				<p>Item Details: {{ donate.details }}<br> Condition: {{ donate.condition }}
+				<p><button ng-if="user.u !== donate.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(donate)">I'm interested</button>
+				<button ng-if="user.u === donate.author.username" type="button" class="btn btn-outline darkbtn float-right" ng-click="remove(donate)">Delete</button></p>
+
+				
 			</div>
 			<div class="col-md-6">
 				<h1>Location</h1>
@@ -16,7 +20,6 @@
 				</div>
 			</div>
 		</div>
-		<button ng-if="user.u !== d.author.username" type="button" class="btn btn-outline darkbtn" ng-click="interested(d)">I'm interested</button>
 
 	</div>
 </div>
