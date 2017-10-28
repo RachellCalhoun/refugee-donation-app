@@ -3,25 +3,22 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
-from tastypie.api import Api
-from donate.api.resources import DonateResource, CategoryResource, SubCategoryResource, RequestResource, UserResource, DonationMatchResource, RequestMatchResource
+from rest_framework import routers
+from donate import views
 
-
-v1_api = Api(api_name='v1')
-v1_api.register(SubCategoryResource())
-v1_api.register(CategoryResource())
-v1_api.register(DonateResource())
-v1_api.register(RequestResource())
-v1_api.register(UserResource())
-v1_api.register(DonationMatchResource())
-v1_api.register(RequestMatchResource())
-
-# v1_api.register(ContactResource())
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
+router.register(r'donations', views.DonateViewSet)
+router.register(r'donationmatches', views.DonationMatchViewSet)
+router.register(r'requests', views.RequestViewSet)
+router.register(r'requestmatches', views.RequestMatchViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^',include('donate.urls')),
-    url(r'^api/', include(v1_api.urls)),
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
     # url(r'^accounts/',include('donate.urls')),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()
