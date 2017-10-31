@@ -13,9 +13,12 @@ router.register(r'donations', views.DonateViewSet)
 router.register(r'donationmatches', views.DonationMatchViewSet)
 router.register(r'requests', views.RequestViewSet)
 router.register(r'requestmatches', views.RequestMatchViewSet)
+router.register(r'categories', views.CategoryViewSet)
+router.register(r'subcategories', views.SubCategoryViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api/login', views.login),
     url(r'^',include('donate.urls')),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))

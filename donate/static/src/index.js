@@ -1,4 +1,4 @@
-angular.module("refugeeapp",["ngRoute"]); //creating module
+angular.module("refugeeapp",["ngRoute", "ngCookies"]); //creating module
 angular.module("refugeeapp") //calling module
     .config(function($routeProvider, $locationProvider){
         $locationProvider.hashPrefix("");

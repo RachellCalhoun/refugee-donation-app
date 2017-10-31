@@ -7,7 +7,7 @@ angular.module("refugeeapp")
             $scope.requestmatches = [];
             function list() {
                 apiSvc.get("requestmatch", { "request": attrs.requestId }).then(function(response){
-                    $scope.requestmatches = response.data.objects;
+                    $scope.requestmatches = response.data;
                 });
             };
             $scope.approve = function(rm) {

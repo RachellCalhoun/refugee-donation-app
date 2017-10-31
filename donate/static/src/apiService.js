@@ -1,5 +1,9 @@
 angular.module("refugeeapp")
-    .factory("apiSvc", function($http){
+    .factory("apiSvc", function($http, $cookies){
+        function http(config){
+            config.headers ={"X-CSRFToken":$cookies.get("csrftoken")}
+            return $http(config)
+        }
         function get(resourceName, params){
             var queryString = "";
             for (var k in params){
@@ -7,10 +11,13 @@ angular.module("refugeeapp")
                     queryString += "&" + k + "=" + params[k]
                 }
             }
-            return $http.get("/api/v1/"+resourceName+"/?format=json" + queryString)
+            return http({
+                method:"get",
+                url: "/api/"+resourceName+"/?format=json" + queryString
+            })
         }
         function getSchema(resourceName){
-            return $http.get("/api/v1/"+resourceName+"/schema/?format=json").then(function(response){
+            return $http.get("/api/"+resourceName+"/schema/?format=json").then(function(response){
                 var fields = {}
                 var schema  = response.data;
                 for(var k in schema.fields){
@@ -29,14 +36,18 @@ angular.module("refugeeapp")
             })
         }
         function post(resourceName, data){
-            return  $http.post("/api/v1/"+resourceName+"/?format=json", data)
+            return http({
+                method:"post",
+                url: "/api/"+resourceName+"/?format=json",
+                data: data
+            })
         }
         function put(resourceName, data){
-            return  $http.put("/api/v1/"+resourceName+"/?format=json", data)
+            return  $http.put("/api/"+resourceName, data)
         }
         function multipartpost(resourceName, data){
             return $http({
-                        url: "/api/v1/"+resourceName+"/?format=json",
+                        url: "/api/"+resourceName+"/?format=json",
                         data: data,
                         method: 'POST',
                         transformRequest: angular.identity,
@@ -44,7 +55,7 @@ angular.module("refugeeapp")
                     })
         }
         function remove(resourceName, resourceId){
-            return $http.delete("/api/v1/" +  resourceName+"/"+ resourceId + "/?format=json")
+            return $http.delete("/api/" +  resourceName+"/"+ resourceId + "/?format=json")
         }
         return {
             get:get,

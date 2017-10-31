@@ -5,11 +5,11 @@ angular.module("refugeeapp")
         function list(){
             apiSvc.get("donate/not_interested", { "user": $scope.user.userId })
             apiSvc.get("donationmatch", { "interested": $scope.user.userId }).then(function(response){
-                var myinterests = response.data.objects.map(function (d){
+                var myinterests = response.data.map(function (d){
                     return d.donate.id;
                 })
                 apiSvc.get("donate").then(function(response){
-                    $scope.donations = response.data.objects.filter(function (d) {
+                    $scope.donations = response.data.filter(function (d) {
                         return myinterests.indexOf(d.id) == -1;
                     });
                 });

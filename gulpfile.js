@@ -70,6 +70,9 @@ gulp.task('copy', function() {
 
     gulp.src(['node_modules/angular-route/angular-route.js', 'node_modules/angular-route/angular-route.min.js'])
         .pipe(gulp.dest(static_root + 'vendor/angular'))
+    
+        gulp.src(['node_modules/angular-cookies/angular-cookies.js', 'node_modules/angular-cookies/angular-cookies.min.js'])
+        .pipe(gulp.dest(static_root + 'vendor/angular'))
 
     gulp.src([
             'node_modules/font-awesome/**',

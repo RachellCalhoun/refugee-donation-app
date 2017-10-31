@@ -7,7 +7,7 @@ angular.module("refugeeapp")
             $scope.donatematches = [];
             function list() {
                 apiSvc.get("donationmatch", { "donate": attrs.donateId }).then(function(response){
-                    $scope.donatematches = response.data.objects;
+                    $scope.donatematches = response.data;
                 });
             };
             $scope.approve = function(dm) {

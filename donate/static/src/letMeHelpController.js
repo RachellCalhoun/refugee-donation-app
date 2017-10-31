@@ -4,7 +4,7 @@ angular.module("refugeeapp")
     var user = sessionSvc.getUser();
     function list(){
         apiSvc.get("requestmatch", { "interested": user.userId }).then(function(response){
-            $scope.requestmatches = response.data.objects;
+            $scope.requestmatches = response.data;
         });
     }
     list();

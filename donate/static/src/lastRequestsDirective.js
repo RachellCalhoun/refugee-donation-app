@@ -5,7 +5,7 @@ angular.module("refugeeapp")
         templateUrl:"/static/templates/lastRequests.html",
         link: function($scope, attributes){
             apiSvc.get("request").then(function(response){
-                $scope.requests = response.data.objects;
+                $scope.requests = response.data;
             });
         }
 

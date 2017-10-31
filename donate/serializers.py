@@ -14,32 +14,32 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ('url', 'name')
 
-class DonateSerializer(serializers.Serializer):
+class DonateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Donate
-        fields = ('url', 'item', 'author', 'image', 'details', 'location', 'published_date', 'condition', 'category', 'subcateogry')
+        fields = ('url', 'item', 'author', 'image', 'details', 'location', 'published_date', 'condition', 'category', 'subcategory')
 
-class RequestSerializer(serializers.Serializer):
+class RequestSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Donate
-        fields = ('url', 'item', 'author', 'location', 'published_date', 'category', 'subcateogry')
+        model = Request
+        fields = ('url', 'item', 'author', 'location', 'published_date', 'category', 'subcategory')
 
-class RequestMatchSerializer(serializers.Serializer):
+class RequestMatchSerializer(serializers.ModelSerializer):
     class Meta:
         model = RequestMatch
-        fields = ('url', 'donate', 'interested', 'approve_contact')
-
-class DonationMatchSerializer(serializers.Serializer):
-    class Meta:
-        model = DonationMatch
         fields = ('url', 'request', 'interested', 'approve_contact')
 
-class CategorySerializer(serializers.Serializer):
+class DonationMatchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DonationMatch
+        fields = ('url', 'donate', 'interested', 'approve_contact')
+
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ('url', 'order', 'title')
 
-class SubCategorySerializer(serializers.Serializer):
+class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategory
         fields = ('url', 'order', 'title', 'link', 'category')

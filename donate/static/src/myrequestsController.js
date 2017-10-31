@@ -4,7 +4,7 @@ angular.module("refugeeapp")
     $scope.user = sessionSvc.getUser();
     function list(){
         apiSvc.get("request", { "author": $scope.user.userId }).then(function(response){
-            $scope.requests = response.data.objects;
+            $scope.requests = response.data;
         });
     }
     list();

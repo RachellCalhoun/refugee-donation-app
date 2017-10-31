@@ -29,7 +29,7 @@ angular.module("refugeeapp")
 
             });
             apiSvc.get("category").then(function(response){
-                $scope.categories = response.data.objects;
+                $scope.categories = response.data;
             });
 
         }
@@ -37,7 +37,7 @@ angular.module("refugeeapp")
         $scope.getSubCategories = function(category){
             $scope.donate.category = category.resource_uri;
             apiSvc.get("subcategory",{category:category.id}).then(function(response){
-                $scope.subcategories = response.data.objects;
+                $scope.subcategories = response.data;
             });
         };
         //todo:needthis? check permissions

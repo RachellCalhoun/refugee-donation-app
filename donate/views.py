@@ -3,6 +3,11 @@ from django.shortcuts import render
 # Create your views here.
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
+from django.contrib.auth import authenticate
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.status import HTTP_401_UNAUTHORIZED
+from rest_framework.authtoken.models import Token
 from donate.serializers import UserSerializer, GroupSerializer, DonateSerializer, RequestSerializer, DonationMatchSerializer, RequestMatchSerializer, CategorySerializer, SubCategorySerializer
 # 
 from donate.models import Donate, Category, SubCategory, Request, DonationMatch, RequestMatch
@@ -54,6 +59,13 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
+class SubCategoryViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows donations to be viewed and edited.
+    """
+    queryset = SubCategory.objects.all()
+    serializer_class = SubCategorySerializer
+
 class DonationMatchViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows donations to be viewed and edited.
@@ -67,3 +79,15 @@ class RequestMatchViewSet(viewsets.ModelViewSet):
     """
     queryset = RequestMatch.objects.all()
     serializer_class = RequestMatchSerializer
+
+@api_view(["POST"])
+def login(request):
+    username = request.data.get("username")
+    password = request.data.get("password")
+
+    user = authenticate(username=username, password=password)
+    if not user:
+        return Response({"error": "Login failed"}, status=HTTP_401_UNAUTHORIZED)
+
+    token, _ = Token.objects.get_or_create(user=user)
+    return Response({"token": token.key})

@@ -15,11 +15,11 @@ angular.module("refugeeapp")
         };
         function list() {
             apiSvc.get("requestmatch", { "interested": $scope.user.userId }).then(function(response){
-                var myhelps = response.data.objects.map(function (r){
+                var myhelps = response.data.map(function (r){
                     return r.request.id;
                 })
                 apiSvc.get("request").then(function (response) {
-                    $scope.requests = response.data.objects.filter(function (r) {
+                    $scope.requests = response.data.filter(function (r) {
                         if (r.location.indexOf("lat") > -1) {
                             r.location = JSON.parse(r.location);
                             r.mapUrl = "http://maps.google.com/maps?q=loc:" + r.location.lat + "," + r.location.lng;
@@ -40,7 +40,7 @@ angular.module("refugeeapp")
 
             });
             apiSvc.get("category").then(function (response) {
-                $scope.categories = response.data.objects;
+                $scope.categories = response.data;
             });
 
         }
@@ -48,7 +48,7 @@ angular.module("refugeeapp")
         $scope.getSubCategories = function (category) {
             $scope.request.category = category.resource_uri;
             apiSvc.get("subcategory", { category: category.id }).then(function (response) {
-                $scope.subcategories = response.data.objects;
+                $scope.subcategories = response.data;
             });
         };
         $scope.remove = function (request) {

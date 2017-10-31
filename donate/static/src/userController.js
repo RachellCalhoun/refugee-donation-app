@@ -12,7 +12,7 @@ angular.module("refugeeapp")
 
         };
         $scope.login = function(user) {
-            apiSvc.post("user/login", user).then(function(response){
+            apiSvc.post("login", user).then(function(response){
                 sessionSvc.set(response.data);
                 $location.path("/welcome")
             }, function(response){

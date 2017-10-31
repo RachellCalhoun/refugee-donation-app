@@ -4,7 +4,7 @@ angular.module("refugeeapp")
         var user = sessionSvc.getUser();
         function list(){
             apiSvc.get("donationmatch", { "interested": user.userId }).then(function(response){
-                $scope.matches = response.data.objects;
+                $scope.matches = response.data;
             });
         }
         list();
