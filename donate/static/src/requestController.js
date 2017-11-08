@@ -19,7 +19,7 @@ angular.module("refugeeapp")
                     return r.request.id;
                 })
                 apiSvc.get("request").then(function (response) {
-                    $scope.requests = response.data.objects.filter(function (r) {
+                    $scope.requests = response.data.objects.map(function (r) {
                         if (r.location.indexOf("lat") > -1) {
                             r.location = JSON.parse(r.location);
                             r.mapUrl = "http://maps.google.com/maps?q=loc:" + r.location.lat + "," + r.location.lng;
@@ -27,7 +27,9 @@ angular.module("refugeeapp")
                         else {
                             r.mapUrl = "http://maps.google.com/maps?q=" + r.location;
                         }
-                        return myhelps.indexOf(r.id) == -1;
+                        return r;
+                    }).filter(function(r){
+                        return myhelps.indexOf(r.id) == -1;                        
                     });
 
                 });

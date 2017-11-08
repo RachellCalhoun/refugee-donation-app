@@ -8,6 +8,9 @@
             <img ng-src="{{ d.image }}" style="width:100%;max-height:200px;"/></a>
             <span ng-bind="d.published_date|date"></span>
             <span ng-bind="d.condition"></span>
+            <span>
+                    <a target="_blank" ng-href="{{ d.mapUrl }}">View Map</a>
+                </span> 
             <p ng-bind="d.details"></p>
             <p>{{ d.category.title }} - {{ d.subcategory.title }}</p>
             <p>

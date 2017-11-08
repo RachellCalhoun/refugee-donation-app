@@ -14,10 +14,18 @@
             <span ng-bind="d.donate.published_date|date"></span><br>
             <span ng-bind="d.donate.details"></span><br>
             <span ng-bind="d.donate.condition"></span><br>
+            <span>
+                    <a target="_blank" ng-href="{{ d.donate.mapUrl }}">View Map</a>
+                </span> 
+                <br>
             <span>{{ d.donate.category.title }} - {{ d.donate.subcategory.title }}</span>
             <div>
-                {{ getStatus(d) }}
-            </div>
+                    <span ng-if="getStatus(d) == 'pending'">
+                        {{ getStatus(d) }}
+                    </span>
+                    <a ng-if="getStatus(d) !== 'pending'" ng-href="mailto:{{ getStatus(d) }}">{{ getStatus(d) }}</a>
+                    
+                </div>
             <span>
                 <!-- todo -->
                 <button type="button" class="btn btn-outline darkbtn" ng-click="remove(d)">No Longer Interested</button>

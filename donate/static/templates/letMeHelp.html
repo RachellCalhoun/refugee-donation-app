@@ -7,11 +7,15 @@
         <span>{{ r.category.title }}</span>
         <p ng-bind="r.request.details"></p>
         <span>
-            <a target="_blank" ng-href="{{ r.mapUrl }}">View Map</a>
+            <a target="_blank" ng-href="{{ r.request.mapUrl }}">View Map</a>
         </span>
         <p>{{ r.request.category.title }} - {{ r.request.subcategory.title }}</p>
         <div>
-            {{ getStatus(r) }}
+            <span ng-if="getStatus(r) == 'pending'">
+                {{ getStatus(r) }}
+            </span>
+            <a ng-if="getStatus(r) !== 'pending'" ng-href="mailto:{{ getStatus(r) }}">{{ getStatus(r) }}</a>
+            
         </div>
         <p>
             <button type="button" class="btn btn-outline darkbtn" ng-click="remove(r)">I can no longer help</button>

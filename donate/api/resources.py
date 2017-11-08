@@ -52,7 +52,7 @@ class SubCategoryResource(ModelResource):
 class UserResource(ModelResource):
     class Meta:
         queryset = User.objects.all()
-        fields = ['first_name', 'last_name', 'email', 'username', 'password']
+        fields = ['first_name', 'last_name', 'email', 'username', 'id']
         allowed_methods = ['get', 'post']
         resource_name = 'user'
         # authentication = SessionAuthentication
