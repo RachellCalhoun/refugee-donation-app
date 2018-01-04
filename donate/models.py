@@ -69,7 +69,7 @@ class Request(models.Model):
     author = models.ForeignKey(User)
     item = models.CharField(max_length=20)
     details = models.TextField(blank=True, null=True)
-    location = models.CharField(max_length=20, blank=True, null=True)
+    location = models.TextField(max_length=20, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, blank=True, null=True)
     subcategory = models.ForeignKey('SubCategory', on_delete=models.CASCADE, blank=True, null=True)
     published_date = models.DateTimeField(blank=True, null=True,  default=timezone.now)
